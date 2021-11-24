@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://uproad-1.c3zbqtbixzbk.ap-northeast-2.rds.amazonaws.com:3306/store
+    username: admin
+    password: comet2059!
+    hikari:
+      minimum-idle: 1
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+server:
+  port: 8080 # set port to 5000 for serve on AWS
