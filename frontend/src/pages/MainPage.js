@@ -15,7 +15,7 @@ import System from './system/System';
 
 const MainPage = () => {
 
-  let session = 2;
+  let session = 1;
  
   return (
     <div>

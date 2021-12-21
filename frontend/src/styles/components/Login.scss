@@ -1,0 +1,16 @@
+.login-container {
+  display: flex;
+  height: 30rem;
+}
+.login-box {
+  display: flex;
+  flex-flow: column;
+  width: 30rem;
+  margin: auto auto;
+  border: solid 1px #e8e8e8;
+  padding: 1rem;
+  border-radius: 7px;
+  .login-button {
+    margin: 0.5rem 0 0.5rem 0;
+  }
+}

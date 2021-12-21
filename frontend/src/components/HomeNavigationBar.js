@@ -14,8 +14,8 @@ const NavigationBar = () => {
           </ul>
         </nav>
         <section className="navigation-login">
-          <Link to="/home/join">회원가입</Link>
           <Link to="/home/login">로그인</Link>
+          <Link to="/home/join">회원가입</Link>
         </section>
       </section>
     </div>

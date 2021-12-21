@@ -4,9 +4,13 @@ import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -17,7 +21,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors();
+//		http			
+			
+//			.and()
+//			.authorizeRequests()
+//			.antMatchers("/home/**").permitAll()
+//			.anyRequest().authenticated();
+		http.csrf().disable()
+		.cors().and()
+        // dont authenticate this particular request
+    	.authorizeRequests().antMatchers("/home/**").permitAll()
+    	.antMatchers(HttpMethod.POST,"/api/**").authenticated()
+    	.antMatchers(HttpMethod.PUT,"/api/**").authenticated()
+    	.antMatchers(HttpMethod.DELETE,"/api/**").authenticated()
+        .anyRequest().permitAll();
 	}
 
 	@Bean
@@ -32,6 +49,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
+	
+	@Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 
 }
