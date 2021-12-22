@@ -1,26 +1,35 @@
 import React from 'react';
 import { useEffect } from 'react';
+import Auth from 'components/AuthenticationService'
 import { TextField, Button } from '@mui/material';
 import styles from 'styles/components/Login.scss';
-// import axios from 'axios';
+import axios from 'axios';
 
 const Login = () => {
 
-  useEffect(() => {
-    // async function test() {
-    //   await axios.get("http://localhost:8080/home/hello")
-    //     .then((response) => {
-    //       console.log(response);
-    //     });
-    //   }
-    //   test();
-    
-    }, []);
-
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
     console.log(e.target.id.value);
     console.log(e.target.pw.value);
+
+    const username = e.target.id.value;
+    const password = e.target.pw.value;
+
+    Auth.login(username, password).then((response) => {
+      console.log(response);
+      Auth.registerSuccessfulLoginForJwt(response.data)
+    }).catch((e) => {
+      console.error(e);
+    }).finally(() => {
+
+    });
+   
+    // await axios.post("http://localhost:8080/home/login", {
+    //     username,
+    //     password
+    //   }).then((response) => {
+    //       console.log(response);
+    //   });
   }
   return (
     <div className={styles}>
