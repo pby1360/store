@@ -15,11 +15,11 @@ import System from './system/System';
 
 const MainPage = () => {
 
-  let session = 1;
+  let id = localStorage.getItem("id");
  
   return (
     <div>
-      <section>{ session === 1 ? <HomeNavigation /> : <UserNavigation /> }</section>
+      <section>{ !id ? <HomeNavigation /> : <UserNavigation /> }</section>
       <section>
         <Routes>
           <Route path="/" exact={true} element={<Home />} />

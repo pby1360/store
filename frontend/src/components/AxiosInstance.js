@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const url = process.env.NODE_ENV === "production" ? "http://13.125.230.251:8080" : 'http://localhost:8080';
 // const url = 'http://localhost:8080';
-console.log(url);
 // axios 인스턴스를 생성합니다.
 const instance = axios.create({
     baseURL: url,
@@ -23,6 +22,8 @@ instance.interceptors.request.use(
       return config;
     }, 
     function (error) {
+        console.log("request error");
+        console.error(error.message);
         // 요청 에러 직전 호출됩니다.
         return Promise.reject(error);
     }
@@ -43,7 +44,8 @@ instance.interceptors.response.use(
     },
 
     function (error) {
-        console.error(error);
+        console.log("response error");
+        console.error(error.message);
         // if(error.response.data.error === "Unauthorized") {
             // localStorage.clear();
             // window.location.replace("/");

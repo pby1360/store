@@ -1,35 +1,28 @@
 import React from 'react';
-import { useEffect } from 'react';
 import Auth from 'components/AuthenticationService'
 import { TextField, Button } from '@mui/material';
 import styles from 'styles/components/Login.scss';
-import axios from 'axios';
 
 const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    console.log(e.target.id.value);
-    console.log(e.target.pw.value);
-
     const username = e.target.id.value;
     const password = e.target.pw.value;
-
     Auth.login(username, password).then((response) => {
-      console.log(response);
-      Auth.registerSuccessfulLoginForJwt(response.data)
+      if (response) {
+        Auth.registerSuccessfulLoginForJwt(response.data);
+        window.location.replace("/store");
+      }
     }).catch((e) => {
-      console.error(e);
-    }).finally(() => {
+      if (e.response.status === 401) {
+        alert("아이디 또는 비밀번호를 확인하세요.");
+      } else {
+        alert("Error");
+      }
 
+    }).finally(() => {
     });
-   
-    // await axios.post("http://localhost:8080/home/login", {
-    //     username,
-    //     password
-    //   }).then((response) => {
-    //       console.log(response);
-    //   });
   }
   return (
     <div className={styles}>

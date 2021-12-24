@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 import com.bb17.store.entity.Users;
 import com.bb17.store.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 	
@@ -22,6 +25,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		log.info("::JwtUserDetailsService -> loadUserByUsername");
 
 		if (repository.existsByUserId(username)) {
 			

@@ -41,10 +41,10 @@ public class JwtAuthenticationController {
 
 	@RequestMapping(value = "/home/login", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+		log.info("::JwtAuthenticationController -> createAuthenticationToken");
 
 		log.info("id: " + authenticationRequest.getUsername());
 		log.info("pw: " + authenticationRequest.getPassword());
-
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -61,13 +61,20 @@ public class JwtAuthenticationController {
 	}
 
 	private void authenticate(String username, String password) throws Exception {
+		log.info("::JwtAuthenticationController -> authenticate");
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
+			log.info("::JwtAuthenticationController -> authenticate -> 1");
+			log.error("error : " + e.getMessage());
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {
-			log.error(e.toString());
+			log.info("::JwtAuthenticationController -> authenticate -> 2");
+			log.error("error : " + e.getMessage());
 			throw new Exception("INVALID_CREDENTIALS", e);
+		} catch (Exception e) {
+			log.info("::JwtAuthenticationController -> authenticate -> 3");
+			log.error("error : " + e.getMessage());
 		}
 	}
 

@@ -24,28 +24,7 @@ class AuthenticationService {
         localStorage.setItem('name', data.n);
         localStorage.setItem('expire', data.e);
     }
-
-    // setupAxiosInterceptors() {
-    //     axios.interceptors.request.use(
-    //         config => {
-    //             const token = localStorage.getItem('token');
-    //             if (token) {
-    //                 config.headers['Authorization'] = 'Bearer ' + token;
-    //             }
-    //             // config.headers['Content-Type'] = 'application/json';
-    //             return config;
-    //         },
-    //         error => {
-    //             Promise.reject(error)
-    //         });
-    // }
-
     logout() {
-        // localStorage.removeItem("token");
-        // localStorage.removeItem("info");
-        // localStorage.removeItem("id");
-        // localStorage.removeItem("name");
-        // localStorage.removeItem("expire");
         localStorage.clear();
     }
 
@@ -66,7 +45,6 @@ class AuthenticationService {
     }
 
     getLoggedInUserName() {
-        //let user = sessionStorage.getItem('authenticatedUser')
         let user = localStorage.getItem('authenticatedUser');
         if(user===null) return '';
         return user;
