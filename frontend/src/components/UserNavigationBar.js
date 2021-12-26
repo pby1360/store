@@ -17,12 +17,7 @@ const NavigationBar = () => {
         </section>
         <nav className="navigation-nav">
           <ul className="navs">
-            <li>고객관리
-              <ul className="sub-list">
-                <li><Link to="/store/customers">고객목록</Link></li>
-                <li><Link to="/vision">고객등급관리</Link></li>
-              </ul>
-            </li>
+            <li><Link to="/store/customer">고객관리</Link></li>
             <li><Link to="/store/reservations">예약관리</Link></li>
             <li><Link to="/store/materials">자재관리</Link></li>
             <li><Link to="/store/sales">매출관리</Link></li>
