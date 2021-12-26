@@ -1,6 +1,7 @@
 import React from 'react';
 
-const StoreHome = () => {
+const StoreHome = (props) => {
+  console.log(props);
   return (
     <div>
       StoreHome

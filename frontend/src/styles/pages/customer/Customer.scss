@@ -1,5 +1,37 @@
-.container {
-  background-color: red;
+.container { 
   width: 100%;
-  height: 10rem;
+  padding: 1rem;
+  
+  .title {
+    padding-left: 2.5rem;
+  }
+
+  .menu-wrap {
+    padding: 0.5rem;
+    // background-color: #e8e8e8;
+    // border-radius: 5px;
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+    .menu-item {
+      padding: 0.25rem 1rem;
+      border-radius: 5px;
+      margin: 0.5rem;
+      flex: 1;
+      min-width: 10rem;
+      border: solid 1px #e8e8e8;
+      cursor: pointer;
+      p {
+        word-break: keep-all;
+        font-size: 0.75rem;
+      }
+    }
+
+    .menu-item:hover {
+      background: #2e85d6;
+      color: #FFF;
+    }
+  }
 }

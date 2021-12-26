@@ -9,6 +9,7 @@ import Login from '../components/Login';
 import Join from '../components/Join';
 import StoreHome from './store/StoreHome';
 import Customer from './store/customer/Customer';
+import CustomerList from './store/customer/CustomerList';
 import Materials from './store/Materials';
 import Reservations from './store/Reservations';
 import Sales from './store/Sales';
@@ -47,6 +48,7 @@ const MainPage = () => {
           <Route path="/home/login" exact={true} element={<Login />} />
           <Route path="/store" exact={true} element={<StoreHome />} />
           <Route path="/store/customer" exact={true} element={<Customer />} />
+          <Route path="/store/customerList" exact={true} element={<CustomerList />} />
           <Route path="/store/materials" exact={true} element={<Materials />} />
           <Route path="/store/reservations" exact={true} element={<Reservations />} />
           <Route path="/store/sales" exact={true} element={<Sales />} />
