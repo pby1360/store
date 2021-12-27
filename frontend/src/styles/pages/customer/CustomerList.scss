@@ -1,8 +1,19 @@
-.container { 
-    width: 100%;
-    padding: 1rem;
-    
-    .title {
-      padding-left: 2.5rem;
+.customer-list-container {
+  padding: 1rem 10%;
+
+  .title {
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.25rem 0;
+
+    Button:nth-child(1) {
+      margin-right: 0.25rem;
     }
+  }
+
+  .grid {
+  }
 }

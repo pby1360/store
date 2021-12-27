@@ -10,6 +10,7 @@ import Join from '../components/Join';
 import StoreHome from './store/StoreHome';
 import Customer from './store/customer/Customer';
 import CustomerList from './store/customer/CustomerList';
+import AddCustomer from './store/customer/AddCustomer';
 import Materials from './store/Materials';
 import Reservations from './store/Reservations';
 import Sales from './store/Sales';
@@ -22,11 +23,11 @@ const MainPage = () => {
       const isExpired = Auth.isExpired();
       console.log("token isExpired : ", isExpired);
       if (isExpired) {
-        if (window.location.pathname !== '/') {
-          localStorage.clear();
-          alert("로그인이 만료됐습니다.");
-          window.location.replace("/");
-        }
+        // if (window.location.pathname !== '/') {
+        localStorage.clear();
+        alert("로그인이 만료됐습니다.");
+        window.location.replace("/");
+        // }
       }
     } else {
       console.log("no token");
@@ -48,7 +49,8 @@ const MainPage = () => {
           <Route path="/home/login" exact={true} element={<Login />} />
           <Route path="/store" exact={true} element={<StoreHome />} />
           <Route path="/store/customer" exact={true} element={<Customer />} />
-          <Route path="/store/customerList" exact={true} element={<CustomerList />} />
+          <Route path="/store/customer/customer-list" exact={true} element={<CustomerList />} />
+          <Route path="/store/customer/add-customer" exact={true} element={<AddCustomer />} />
           <Route path="/store/materials" exact={true} element={<Materials />} />
           <Route path="/store/reservations" exact={true} element={<Reservations />} />
           <Route path="/store/sales" exact={true} element={<Sales />} />

@@ -1,0 +1,38 @@
+.add-customer-container {
+  padding: 1rem 10%;
+
+  .title {
+  }
+
+  .form {
+    width: 80%;
+    padding: 1rem;
+    margin: 0 auto;
+
+    .input-form {
+      padding: 2.5rem;
+      border: solid 1px #e8e8e8;
+      border-radius: 7px;
+
+      .input-form-row {
+        margin: 1rem 0;
+
+        .input-form-item {
+        }
+
+        .input-form-item-select {
+          display: flex;
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.25rem 0;
+
+      Button:nth-child(1) {
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}

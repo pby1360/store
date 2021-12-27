@@ -1,30 +1,27 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import "styles/pages/customer/Customer.scss";
 
-const Customer = (props) => {
-  console.log(props);
-
-  const moveMenu = (e) => {
-    console.log(e.target.id);
-    const target = e.target.id;
-    switch (target) {
-      case "customerManagement":
-
-        break;
-    
-      default:
-        break;
-    }
-  }
+const Customer = () => {
+  
+  const navigate = useNavigate();
+  // const moveMenu = (e) => {
+  //   switch (e.target.id) {
+  //     case "customerList":
+  //       navigate("/store/customer/customerList");
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
   return (
-    <div className="container">
+    <div className="customer-container">
       <section className="title">
         <h1>고객</h1>
       </section>
       <section className="menu-wrap">
-        <section className="menu-item" id="customerManagement" onClick={moveMenu}>
+        <section className="menu-item" id="customerList" onClick={() => navigate("/store/customer/customer-list")}>
           <h2>고객관리</h2>
           <p>전체 고객목록을 조회하고 신규고객을 등록하거나 수정, 삭제 할 수 있습니다.</p>
         </section>
