@@ -11,6 +11,15 @@ const AddCustomer = () => {
   const navigate = useNavigate();
 
   const [ modalActive, setModalActive] = useState(false);
+  const [ info, setInfo ] = useState({
+    name: "",
+    mobile: "",
+    birth: "",
+    address1: "",
+    address2: "",
+    detailAddress: "",
+    email: "",
+  })
 
   const DateInput = styled(InputBase)(() => ({
     '& .MuiInputBase-input': {
@@ -26,12 +35,26 @@ const AddCustomer = () => {
 
   const addCustomer = async(e) => {
     e.preventDefault();
-    console.log(e);
+    console.log(info);
   };
 
   const selectPostCode = (data) => {
     console.log(data);
+    setInfo({
+      ...info,
+      address1: data.jibunAddress,
+      address2: data.roadAddress,
+    });
     setModalActive(false);
+  }
+
+  const onChange = async (e) => {
+    console.log(e);
+    setInfo({
+      ...info,
+      [e.target.name]: e.target.value
+    });
+    console.log(info);
   }
 
   
@@ -47,22 +70,27 @@ const AddCustomer = () => {
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>이름</InputLabel>
-                <TextField id='' className='' fullWidth={true} variant='outlined' size='small' required />
+                <TextField onChange={onChange} id='name' name='name' fullWidth={true} variant='outlined' size='small' required />
               </section>
             </section>
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>연락처</InputLabel>
-                <TextField id='' className='' variant='outlined' size='small' required fullWidth={true} />
+                <TextField onChange={onChange} id='mobile' name='mobile' variant='outlined' size='small' required fullWidth={true} />
               </section>
-              <section className='input-form-item'>
+            </section>
+            <section className='input-form-row'>
+            <section className='input-form-item'>
                 <InputLabel>생년월일</InputLabel>
                 <section className='input-form-item-select'>
                   <DateInput
-                    required
+                    onChange={onChange}
+                    value={info.birth}
                     variant="outlined"
-                    name=""
+                    id='birth'
+                    name='birth'
                     type="date"
+                    required
                     inputlabelprops={{
                       shrink: true,
                     }}
@@ -72,23 +100,25 @@ const AddCustomer = () => {
               </section>
             </section>
             <section className='input-form-row'>
-              <section className='input-form-item-custom' style={{flex:'0.5'}}>
-                <InputLabel>우편번호</InputLabel>
-                <TextField id='' className='' variant='outlined' size='small' fullWidth={true} disabled onClick={() => setModalActive(true)} style={{backgroundColor: '#E8E8E8'}} placeholder='클릭하세요' />
+              <section className='input-form-item-custom' style={{flex:'1'}}>
+                <InputLabel>지번주소</InputLabel>
+                <TextField onChange={onChange} value={info.address1} id='address1' name='address1' variant='outlined' size='small' fullWidth={true} disabled onClick={() => setModalActive(true)} style={{backgroundColor: '#E8E8E8'}} placeholder='클릭하세요' />
               </section>
               <section className='input-form-item'>
-                <InputLabel>주소</InputLabel>
-                <TextField id='' className='' variant='outlined' size='small' fullWidth={true} disabled />
+                <InputLabel>도로명주소</InputLabel>
+                <TextField onChange={onChange} value={info.address2} id='address2' name='address2' className='' variant='outlined' size='small' fullWidth={true} disabled />
               </section>
+            </section>
+            <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>상세주소</InputLabel>
-                <TextField id='' className='' variant='outlined' size='small' fullWidth={true} />
+                <TextField onChange={onChange} id='detailAddress' name='detailAddress' className='' variant='outlined' size='small' fullWidth={true} />
               </section>
             </section>
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>이메일</InputLabel>
-                <TextField type="email" id='' className='' variant='outlined' size='small' fullWidth={true} />
+                <TextField onChange={onChange} type="email" id='email' name='email' className='' variant='outlined' size='small' fullWidth={true} />
               </section>
             </section>
           </section>
