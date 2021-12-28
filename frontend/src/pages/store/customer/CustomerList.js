@@ -66,6 +66,7 @@ const CustomerList = () => {
 
   const selectRow = (row) => {
     setSelectedRow(row);
+    console.log(selectedRow);
     setModifyActive(false);
   };
 

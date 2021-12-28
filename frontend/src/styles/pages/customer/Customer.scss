@@ -1,15 +1,19 @@
 .customer-container {
-  padding: 1rem 10%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  padding: 2.5rem;
 
   .title {
   }
   .menu-wrap {
     padding: 0.5rem;
-    width: 70%;
-    // width: 60rem;
+    width: 80%;
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
+    justify-content: center;
 
     .menu-item {
       padding: 0.25rem 1rem;

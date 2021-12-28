@@ -1,5 +1,9 @@
 .add-customer-container {
-  padding: 1rem 10%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  padding: 2.5rem;
 
   .title {
   }
@@ -16,12 +20,16 @@
 
       .input-form-row {
         margin: 1rem 0;
+        display: flex;
 
         .input-form-item {
+          flex: 1;
         }
-
-        .input-form-item-select {
-          display: flex;
+        .input-form-item:nth-child(2) {
+          margin-left: 1rem;
+        }
+        .input-form-item:nth-child(3) {
+          margin-left: 1rem;
         }
       }
     }

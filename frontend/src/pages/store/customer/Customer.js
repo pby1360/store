@@ -5,16 +5,6 @@ import "styles/pages/customer/Customer.scss";
 const Customer = () => {
   
   const navigate = useNavigate();
-  // const moveMenu = (e) => {
-  //   switch (e.target.id) {
-  //     case "customerList":
-  //       navigate("/store/customer/customerList");
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
-
   return (
     <div className="customer-container">
       <section className="title">

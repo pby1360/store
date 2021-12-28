@@ -1,5 +1,9 @@
 .customer-list-container {
-  padding: 1rem 10%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  padding: 2.5rem;
 
   .title {
   }
