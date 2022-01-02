@@ -22,8 +22,9 @@ public class Customer {
 	private long cusNo;
 	@Column(name = "USER_NO")
 	private long userNo;
-	private String name;	
-	private String mobile;	
+	private String name;
+	@Column(name = "PHONE_NUMBER")
+	private String phoneNumber;	
 	private Date birth;	
 	@Column(name = "JIBUN_ADDRESS")
 	private String jibunAddress;

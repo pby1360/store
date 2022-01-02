@@ -1,18 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
-import "styles/pages/customer/AddCustomer.scss";
+import { useState, useEffect } from 'react';
+import "styles/pages/customer/DetailCustomer.scss";
 import { Button, InputLabel, TextField, Modal, styled } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DaumPostCode from 'components/PostCodeComponent';
 import axios from 'components/AxiosInstance';
 
-const AddCustomer = () => {
+const DetailCustomer = () => {
 
   const navigate = useNavigate();
+  const params = useParams();
 
   const [ modalActive, setModalActive] = useState(false);
+  const [ modifyActive, setModifyActive] = useState(false);
   const [ info, setInfo ] = useState({
+    userNo: 0,
+    cusNo: 0,
     name: "",
     phoneNumber: "",
     birth: "",
@@ -21,7 +25,28 @@ const AddCustomer = () => {
     detailAddress: "",
     email: "",
     memo: "",
+    crtDt: "",
   })
+
+  useEffect(() => {
+    // setLoading(true);
+    const getCustomerInfo = async() => {
+      await axios.get(`/api/customer/${params.userNo}/${params.cusNo}`)
+        .then( async (response) => {
+          const data = await response.data;
+          data.crtDt = new Date(data.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
+          data.birth = new Date(data.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
+          console.log(data);
+          setInfo(data);
+        }).catch((error) => {
+          console.error(error);
+          // alertRef.current.handleClick("error", <span>에러가 발생 했습니다. <br />{error.message}</span>);
+        }).finally(() => {
+          // setLoading(false);
+        })
+    } 
+    getCustomerInfo();
+  }, [params]);
 
   const DateInput = styled(InputBase)(() => ({
     '& .MuiInputBase-input': {
@@ -90,10 +115,24 @@ const AddCustomer = () => {
     });
   };
 
+  const modifyButtons = (
+    <section className="buttons">
+      <Button type="button" variant='contained'>저장</Button>
+      <Button type="button" variant='contained' onClick={ () => setModifyActive(false) }>취소</Button>
+    </section>
+  );
+
+  const detailButtons = (
+    <section className="buttons">
+      <Button type="button" variant='contained' onClick={ () => setModifyActive(true) }>수정</Button>
+      <Button type="button" onClick={() => navigate(-1)} variant='contained'>목록</Button>
+    </section>
+  );
+
   return (
     <div className='add-customer-container'>
       <section className="title">
-        <h1>고객등록</h1>
+        <h1>고객상세</h1>
       </section>
       <section className='form'>
         <form onSubmit={addCustomer}>
@@ -101,13 +140,13 @@ const AddCustomer = () => {
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>이름</InputLabel>
-                <TextField onChange={onChange} id='name' name='name' fullWidth={true} variant='outlined' size='small' required />
+                <TextField value={info.name} onChange={onChange} id='name' name='name' fullWidth={true} variant='outlined' size='small' required disabled={!modifyActive} />
               </section>
             </section>
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>연락처</InputLabel>
-                <TextField onChange={onChange} id='phoneNumber' name='phoneNumber' variant='outlined' size='small' fullWidth={true} />
+                <TextField value={info.phoneNumber} onChange={onChange} id='phoneNumber' name='phoneNumber' variant='outlined' size='small' fullWidth={true} disabled={!modifyActive} />
               </section>
             </section>
             <section className='input-form-row'>
@@ -125,6 +164,7 @@ const AddCustomer = () => {
                       shrink: true,
                     }}
                     fullWidth={true}
+                    disabled={!modifyActive}
                   />
                 </section>
               </section>
@@ -134,7 +174,7 @@ const AddCustomer = () => {
                 <InputLabel>지번주소</InputLabel>
                 <section className='input-form-item-custom-group'>
                   <TextField onChange={onChange} value={info.jibunAddress} id='address1' name='address1' variant='outlined' size='small' fullWidth={true} disabled />
-                  <Button variant='contained' style={{backgroundColor: '#333' }} onClick={() => setModalActive(true)}>검색</Button>
+                  <Button variant='contained' style={ modifyActive ? {backgroundColor: '#333' } : {backgroundColor: '#c8c8c8' }} onClick={() => setModalActive(true)} disabled={!modifyActive}>검색</Button>
                 </section>
               </section>
               <section className='input-form-item'>
@@ -145,26 +185,29 @@ const AddCustomer = () => {
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>상세주소</InputLabel>
-                <TextField onChange={onChange} id='detailAddress' name='detailAddress' className='' variant='outlined' size='small' fullWidth={true} />
+                <TextField onChange={onChange} value={info.detailAddress} id='detailAddress' name='detailAddress' className='' variant='outlined' size='small' fullWidth={true} disabled={!modifyActive} />
               </section>
             </section>
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>이메일</InputLabel>
-                <TextField onChange={onChange} type="email" id='email' name='email' className='' variant='outlined' size='small' fullWidth={true} />
+                <TextField value={info.email} onChange={onChange} type="email" id='email' name='email' className='' variant='outlined' size='small' fullWidth={true} disabled={!modifyActive} />
               </section>
             </section>
             <section className='input-form-row'>
               <section className='input-form-item'>
                 <InputLabel>메모</InputLabel>
-                <TextField onChange={onChange} type="text" id='memo' name='memo' className='' variant='outlined' multiline rows={5} fullWidth={true} />
+                <TextField value={info.memo} onChange={onChange} type="text" id='memo' name='memo' className='' variant='outlined' multiline rows={5} fullWidth={true} disabled={!modifyActive} />
+              </section>
+            </section>
+            <section className='input-form-row'>
+              <section className='input-form-item'>
+                <InputLabel>등록일</InputLabel>
+                <TextField value={info.crtDt} id='crtDt' name='crtDt' className='' variant='outlined' size='small' fullWidth={true} disabled />
               </section>
             </section>
           </section>
-          <section className="buttons">
-            <Button type="submit" variant='contained'>저장</Button>
-            <Button type="button" onClick={() => navigate(-1)} variant='contained'>목록</Button>
-          </section>
+          { modifyActive ? modifyButtons : detailButtons }
         </form>
         <Modal
           open={modalActive}
@@ -179,4 +222,4 @@ const AddCustomer = () => {
   );
 };
 
-export default AddCustomer;
+export default DetailCustomer;

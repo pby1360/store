@@ -8,6 +8,8 @@ import com.bb17.store.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	
-	List<Customer> findByUserNo(Long userNo);
+	List<Customer> findByUserNo(long userNo);
+	
+	Customer findByUserNoAndCusNo(long userNo, long cusNo);
 
 }

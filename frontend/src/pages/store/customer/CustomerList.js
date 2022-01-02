@@ -31,7 +31,7 @@ const CustomerList = () => {
       flex: 2,
     },
     {
-      field: 'mobile',
+      field: 'phoneNumber',
       headerName: '연락처',
       flex: 3,
     },
@@ -55,6 +55,10 @@ const CustomerList = () => {
           const data = await response.data;
           data.forEach((item, index) => {
             item.id = index;
+            if (item.birth) {
+              item.birth = new Date(item.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
+            }
+            item.crtDt = new Date(item.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
           });
           setRows(data);
         }).catch((error) => {
@@ -71,7 +75,6 @@ const CustomerList = () => {
 
   const selectRow = (row) => {
     setSelectedRow(row);
-    console.log(selectedRow);
     setModifyActive(false);
   };
 
@@ -82,7 +85,7 @@ const CustomerList = () => {
       </section>
       <section className="buttons">
         <Button variant="contained" onClick={() => navigate("/store/customer/add-customer")}>등록</Button>
-        <Button variant="contained" disabled={isModifyActive}>수정</Button>
+        <Button variant="contained" disabled={isModifyActive} onClick={() => navigate(`/store/customer/detail-customer/${selectedRow.userNo}/${selectedRow.cusNo}`)}>상세</Button>
       </section>
       <section className='grid'>
       <Grid columns={columns} rows={rows} selectRow={selectRow} />
