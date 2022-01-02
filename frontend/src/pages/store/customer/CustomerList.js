@@ -1,68 +1,66 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "styles/pages/customer/CustomerList.scss";
 import Grid from "components/Grid";
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'components/AxiosInstance';
 
 const CustomerList = () => {
 
   const navigate = useNavigate();
-  
+
+  const [rows, setRows] = useState([]);
   const [isModifyActive, setModifyActive] = useState(true);
   const [selectedRow, setSelectedRow] = useState({});
 
   const columns = [
     {
-      field: 'id',
-      headerName: 'ID',
+      field: 'cusNo',
+      headerName: '고객번호',
       flex: 1,
     },
     {
-      field: 'firstName',
-      headerName: 'First name',
+      field: 'name',
+      headerName: '이름',
       flex: 1,
     },
     {
-      field: 'lastName',
-      headerName: 'Last name',
+      field: 'mobile',
+      headerName: '연락처',
       flex: 1,
     },
     {
-      field: 'age',
-      headerName: 'Age',
-      // type: 'number',
+      field: 'birth',
+      headerName: '생년월일',
       flex: 1,
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
+      field: 'crtDt',
+      headerName: '등록일',
       flex: 1,
-      valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     },
   ];
 
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-    { id: 10, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 11, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 12, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 13, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 14, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 15, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 16, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 17, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 18, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
+  useEffect(() => {
+    // setLoading(true);
+    const getList = async() => {
+      await axios.get("/api/customer")
+        .then( async (response) => {
+          const data = await response.data;
+          console.log(data);
+          setRows(data);
+        }).catch((error) => {
+          console.error(error);
+          // alertRef.current.handleClick("error", <span>에러가 발생 했습니다. <br />{error.message}</span>);
+        }).finally(() => {
+          // setLoading(false);
+        })
+    } 
+    getList();
+  }, []);
+
+  
 
   const selectRow = (row) => {
     setSelectedRow(row);
