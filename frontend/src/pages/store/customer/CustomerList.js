@@ -16,6 +16,11 @@ const CustomerList = () => {
 
   const columns = [
     {
+      field: 'id',
+      headerName: 'id',
+      hide: true,
+    },
+    {
       field: 'cusNo',
       headerName: '고객번호',
       flex: 1,
@@ -23,22 +28,22 @@ const CustomerList = () => {
     {
       field: 'name',
       headerName: '이름',
-      flex: 1,
+      flex: 2,
     },
     {
       field: 'mobile',
       headerName: '연락처',
-      flex: 1,
+      flex: 3,
     },
     {
       field: 'birth',
       headerName: '생년월일',
-      flex: 1,
+      flex: 3,
     },
     {
       field: 'crtDt',
       headerName: '등록일',
-      flex: 1,
+      flex: 3,
     },
   ];
 
@@ -48,7 +53,9 @@ const CustomerList = () => {
       await axios.get("/api/customer")
         .then( async (response) => {
           const data = await response.data;
-          console.log(data);
+          data.forEach((item, index) => {
+            item.id = index;
+          });
           setRows(data);
         }).catch((error) => {
           console.error(error);
