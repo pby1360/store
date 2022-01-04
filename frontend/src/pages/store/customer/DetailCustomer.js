@@ -12,8 +12,9 @@ const DetailCustomer = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const [ modalActive, setModalActive] = useState(false);
-  const [ modifyActive, setModifyActive] = useState(false);
+  const [ submitActive, setSubmitActive ] = useState(false);
+  const [ modalActive, setModalActive ] = useState(false);
+  const [ modifyActive, setModifyActive ] = useState(false);
   const [ info, setInfo ] = useState({
     userNo: 0,
     cusNo: 0,
@@ -28,25 +29,28 @@ const DetailCustomer = () => {
     crtDt: "",
   })
 
+  const getCustomerInfo = async() => {
+    await axios.get(`/api/customer/${params.userNo}/${params.cusNo}`)
+      .then( async (response) => {
+        const data = await response.data;
+        data.crtDt = new Date(data.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
+        if (data.birth) {
+          data.birth = new Date(data.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
+        }
+        setInfo(data);
+        console.log(info);
+      }).catch((error) => {
+        console.error(error);
+        // alertRef.current.handleClick("error", <span>에러가 발생 했습니다. <br />{error.message}</span>);
+      }).finally(() => {
+        // setLoading(false);
+      })
+  }
+
   useEffect(() => {
     // setLoading(true);
-    const getCustomerInfo = async() => {
-      await axios.get(`/api/customer/${params.userNo}/${params.cusNo}`)
-        .then( async (response) => {
-          const data = await response.data;
-          data.crtDt = new Date(data.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
-          data.birth = new Date(data.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
-          console.log(data);
-          setInfo(data);
-        }).catch((error) => {
-          console.error(error);
-          // alertRef.current.handleClick("error", <span>에러가 발생 했습니다. <br />{error.message}</span>);
-        }).finally(() => {
-          // setLoading(false);
-        })
-    } 
     getCustomerInfo();
-  }, [params]);
+  }, []);
 
   const DateInput = styled(InputBase)(() => ({
     '& .MuiInputBase-input': {
@@ -77,22 +81,48 @@ const DetailCustomer = () => {
     setModalActive(false);
   }
 
+  const modifyButtons = (
+    <section className="buttons">
+      <Button type="submit" variant='contained'>저장</Button>
+      <Button type="button" variant='contained' onClick={ () => setModifyActive(false) }>취소</Button>
+    </section>
+  );
+  
+  const detailButtons = (
+    <section className="buttons">
+      <Button type="button" variant='contained' onClick={ () => setModifyActive(true) }>수정</Button>
+      <Button type="button" onClick={() => navigate(-1)} variant='contained'>목록</Button>
+    </section>
+  );
+
   const onChange = async (e) => {
+    console.log("onchange");
     setInfo({
       ...info,
       [e.target.name]: e.target.value
     });
   }
 
-  const addCustomer = async(e) => {
+  const editCustomer = async(e) => {
     e.preventDefault();
+    console.log(submitActive);
+    if (!submitActive) {
+      setSubmitActive(true);
+      return;
+    }
     info.name = info.name.trim();
     info.phoneNumber = info.phoneNumber.replace(/\s/g,'').replace(/[^0-9]/g,'');
     if (info.phoneNumber.length > 11) {
       alert("연락처 형식이 일치하지 않습니다.");
       return;
     }
+    const isSave = window.confirm("저장하시겠습니까?");
+    if (!isSave) {
+      return;
+    }
     const userInfo = {};
+    userInfo.userNo = info.userNo;
+    userInfo.cusNo = info.cusNo;
     userInfo.name = info.name ? info.name : null;
     userInfo.phoneNumber = info.phoneNumber ? info.phoneNumber : null;
     userInfo.birth = info.birth ? info.birth : null;
@@ -101,41 +131,30 @@ const DetailCustomer = () => {
     userInfo.detailAddress = info.detailAddress ? info.detailAddress : null;
     userInfo.email = info.email ? info.email : null;
     userInfo.memo = info.memo ? info.memo : null;
-    await axios.post('/api/customer', userInfo,
+    userInfo.crtDt = info.crtDt;
+    await axios.put('/api/customer', userInfo,
     {
       headers: {
         'Content-Type': 'application/json'
       },
     }).then(function (response) {
       console.log(response);
-      window.confirm("등록이 완료됐습니다.");
-      navigate('/store/customer/customer-list', { replace: true })
+      window.confirm("저장을 완료 했습니다.");
+      setSubmitActive(false)
+      setModifyActive(false);
+      getCustomerInfo();
+      // navigate('/store/customer/customer-list', { replace: true })
     }).catch(function (error) {
       console.error(error);
     });
   };
-
-  const modifyButtons = (
-    <section className="buttons">
-      <Button type="button" variant='contained'>저장</Button>
-      <Button type="button" variant='contained' onClick={ () => setModifyActive(false) }>취소</Button>
-    </section>
-  );
-
-  const detailButtons = (
-    <section className="buttons">
-      <Button type="button" variant='contained' onClick={ () => setModifyActive(true) }>수정</Button>
-      <Button type="button" onClick={() => navigate(-1)} variant='contained'>목록</Button>
-    </section>
-  );
-
   return (
     <div className='add-customer-container'>
       <section className="title">
         <h1>고객상세</h1>
       </section>
       <section className='form'>
-        <form onSubmit={addCustomer}>
+        <form onSubmit={editCustomer}>
           <section className='input-form'>
             <section className='input-form-row'>
               <section className='input-form-item'>
@@ -207,7 +226,7 @@ const DetailCustomer = () => {
               </section>
             </section>
           </section>
-          { modifyActive ? modifyButtons : detailButtons }
+          { modifyActive ? (modifyButtons) : (detailButtons) }
         </form>
         <Modal
           open={modalActive}

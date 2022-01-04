@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,6 +77,27 @@ public class CustomerContoroller {
 			
 			customer.setUserNo(user.getUserNo());
 			customer.setCrtDt(new Date());
+			customerRepository.save(customer);
+			result = "success";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "fail";
+		}
+		
+		return result;
+	}
+	
+	@PutMapping
+	public String editCustomer(@RequestBody Customer customer) {
+//		Authentication auth   = SecurityContextHolder.getContext().getAuthentication();
+//		String userId = auth.getName();
+		
+		String result = null;
+
+		try {
+			
+			log.info("customer : " + customer);
 			customerRepository.save(customer);
 			result = "success";
 			

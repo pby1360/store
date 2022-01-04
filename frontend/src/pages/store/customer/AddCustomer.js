@@ -83,7 +83,7 @@ const AddCustomer = () => {
       },
     }).then(function (response) {
       console.log(response);
-      window.confirm("등록이 완료됐습니다.");
+      window.confirm("저장을 완료 했습니다.");
       navigate('/store/customer/customer-list', { replace: true })
     }).catch(function (error) {
       console.error(error);
