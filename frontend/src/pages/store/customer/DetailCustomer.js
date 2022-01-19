@@ -36,6 +36,8 @@ const DetailCustomer = () => {
         data.crtDt = new Date(data.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
         if (data.birth) {
           data.birth = new Date(data.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
+        } else {
+          data.birth = "";
         }
         setInfo(data);
         console.log(info);
@@ -84,13 +86,19 @@ const DetailCustomer = () => {
   const modifyButtons = (
     <section className="buttons">
       <Button type="submit" variant='contained'>저장</Button>
-      <Button type="button" variant='contained' onClick={ () => setModifyActive(false) }>취소</Button>
+      <Button type="button" variant='contained' onClick={ () => clickCancel() }>취소</Button>
     </section>
   );
+
+  const clickCancel = () => {
+    setModifyActive(false);
+    setSubmitActive(false);
+  }
   
   const detailButtons = (
     <section className="buttons">
       <Button type="button" variant='contained' onClick={ () => setModifyActive(true) }>수정</Button>
+      <Button type="button" variant='contained' onClick={ () => deleteCustomer() }>삭제</Button>
       <Button type="button" onClick={() => navigate(-1)} variant='contained'>목록</Button>
     </section>
   );
@@ -105,20 +113,22 @@ const DetailCustomer = () => {
 
   const editCustomer = async(e) => {
     e.preventDefault();
-    console.log(submitActive);
     if (!submitActive) {
       setSubmitActive(true);
       return;
     }
     info.name = info.name.trim();
-    info.phoneNumber = info.phoneNumber.replace(/\s/g,'').replace(/[^0-9]/g,'');
-    if (info.phoneNumber.length > 11) {
-      alert("연락처 형식이 일치하지 않습니다.");
-      return;
-    }
-    const isSave = window.confirm("저장하시겠습니까?");
-    if (!isSave) {
-      return;
+    if (info.phoneNumber) {
+      info.phoneNumber = info.phoneNumber.replace(/\s/g,'').replace(/[^0-9]/g,'');
+
+      if (info.phoneNumber.length > 11) {
+        alert("연락처 형식이 일치하지 않습니다.");
+        return;
+      }
+      const isSave = window.confirm("저장하시겠습니까?");
+      if (!isSave) {
+        return;
+      }
     }
     const userInfo = {};
     userInfo.userNo = info.userNo;
@@ -148,6 +158,31 @@ const DetailCustomer = () => {
       console.error(error);
     });
   };
+
+  const deleteCustomer = async() => {
+    const isDelete = window.confirm("고객정보를 삭제하시겠습니까?");
+    if (!isDelete) {
+      return;
+    }
+    const userInfo = {};
+    userInfo.userNo = info.userNo;
+    userInfo.cusNo = info.cusNo;
+    await axios.delete('/api/customer', 
+    {
+      data : userInfo,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(function (response) {
+      console.log(response);
+      window.confirm("고객정보를 삭제했습니다.");
+      navigate('/store/customer/customer-list', { replace: true })
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
   return (
     <div className='add-customer-container'>
       <section className="title">

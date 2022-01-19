@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import "styles/pages/customer/CustomerList.scss";
 import Grid from "components/Grid";
+import SearchBar from "components/SearchBar";
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'components/AxiosInstance';
@@ -58,6 +59,8 @@ const CustomerList = () => {
             if (item.birth) {
               item.birth = new Date(item.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
             }
+            // item.cusNo = item.customerId.cusNo;
+            // item.userNo = item.customerId.userNo;
             item.crtDt = new Date(item.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
           });
           setRows(data);
@@ -82,6 +85,9 @@ const CustomerList = () => {
     <div className="customer-list-container">
       <section className="title">
         <h1>고객관리</h1>
+      </section>
+      <section className="search-bar">
+        <SearchBar />
       </section>
       <section className="buttons">
         <Button variant="contained" onClick={() => navigate("/store/customer/add-customer")}>등록</Button>

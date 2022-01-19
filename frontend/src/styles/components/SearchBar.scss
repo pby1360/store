@@ -1,0 +1,16 @@
+.searchbar-container {
+  margin: 1rem 0;
+  width: 100%;
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 4px;
+
+  .searchbar-form {
+    display: flex;
+    justify-content: space-between;
+    .searchbar-inputs {
+    }
+    .searchbar-button {
+      margin: 1rem;
+    }
+  }
+}

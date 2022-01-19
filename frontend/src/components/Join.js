@@ -1,13 +1,19 @@
 import React from 'react';
 import { TextField, Button, InputLabel } from '@mui/material';
 import 'styles/components/Join.scss';
-// import axios from 'components/AxiosInstance';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Join = () => {
 
+  const navigate = useNavigate();
+
   async function join(e) {
     e.preventDefault();
+    if (e.target.password.value !== e.target.passwordCheck.value) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
     const data = {
       userId: e.target.userId.value,
       password: e.target.password.value,
@@ -21,6 +27,13 @@ const Join = () => {
       },
     }).then(function (response) {
       console.log(response);
+      if (response.data === "duplicated") {
+        alert("중복된 아이디 입니다.");
+        return;
+      } else if (response.data === "success") {
+        window.confirm("회원가입을 완료했습니다 로그인 해주세요.");
+        navigate("/home/login");
+      }
     }).catch(function (error) {
       console.error(error);
     });

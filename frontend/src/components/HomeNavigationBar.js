@@ -7,7 +7,7 @@ const NavigationBar = () => {
     <div className={style}>
       <section className="navigation-bar">
         <section className="navigation-logo">
-          <Link to="/">BIZ-PLUS</Link>
+          <Link to="/">Store</Link>
         </section>
         <nav className="navigation-nav">
           <ul className="navs">
