@@ -15,6 +15,34 @@ const CustomerList = () => {
   const [isModifyActive, setModifyActive] = useState(true);
   const [selectedRow, setSelectedRow] = useState({});
 
+  const searchColumns = [
+    {
+      field: "birthYear",
+      fieldName: "생년",
+      type: "combo",
+      width: 140,
+      comboData: [
+        { value: "1959", description: "1959"},
+        { value: "1991", description: "1991"},
+        { value: "1992", description: "1992"},
+        { value: "1993", description: "1993"},
+        { value: "2022", description: "2022"},
+      ]
+    },
+    {
+      field: "name",
+      fieldName: "이름",
+      type: "text",
+      width: 140,
+    },
+    {
+      field: "phoneNumber",
+      fieldName: "연락처",
+      type: "text",
+      width: 180,
+    },
+  ];
+
   const columns = [
     {
       field: 'id',
@@ -74,11 +102,14 @@ const CustomerList = () => {
     getList();
   }, []);
 
-  
-
   const selectRow = (row) => {
     setSelectedRow(row);
     setModifyActive(false);
+  };
+
+  const searchData = (params) => {
+    console.log(params);
+    console.log("parent searchData");
   };
 
   return (
@@ -87,7 +118,7 @@ const CustomerList = () => {
         <h1>고객관리</h1>
       </section>
       <section className="search-bar">
-        <SearchBar />
+        <SearchBar columns={searchColumns} searchData={searchData} />
       </section>
       <section className="buttons">
         <Button variant="contained" onClick={() => navigate("/store/customer/add-customer")}>등록</Button>
