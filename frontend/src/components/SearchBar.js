@@ -70,49 +70,6 @@ const SearchBar = ({columns, searchData}) => {
               )
             }
           })}
-          {/* <FormControl sx={{ m: 2, width: 140}}>
-            <FormHelperText sx={{ m: 0, color: "#000" }}>생년</FormHelperText>
-            <Select
-              value={search.birthYear || ""}
-              onChange={onChange}
-              id="birthYear"
-              name="birthYear"
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}
-              size="small"
-            >
-              <MenuItem value="">
-                <em>선택하세요</em>
-              </MenuItem>
-              <MenuItem value={"1959"}>1959</MenuItem>
-              <MenuItem value={"1991"}>1991</MenuItem>
-              <MenuItem value={"1992"}>1992</MenuItem>
-              <MenuItem value={"1993"}>1993</MenuItem>
-              <MenuItem value={"2022"}>2022</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl sx={{ m: 2, width: 140}}>
-            <FormHelperText sx={{ m: 0, color: "#000" }}>이름</FormHelperText>
-            <TextField
-              value={search.name || ""}
-              onChange={onChange}
-              id="name"
-              name="name"
-              variant="outlined"
-              size="small"
-            />
-          </FormControl>
-          <FormControl sx={{ m: 2, width: 140}}>
-            <FormHelperText sx={{ m: 0, color: "#000" }}>연락처</FormHelperText>
-            <TextField
-              value={search.phoneNumber || ""}
-              onChange={onChange}
-              id="phoneNumber"
-              name="phoneNumber"
-              variant="outlined"
-              size="small"
-            />
-          </FormControl> */}
         </section>
         <section className="searchbar-button">
           <Button type="submit" variant="contained">검색</Button>

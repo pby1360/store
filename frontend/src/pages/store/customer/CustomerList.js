@@ -13,27 +13,28 @@ const CustomerList = () => {
 
   const [rows, setRows] = useState([]);
   const [isModifyActive, setModifyActive] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [selectedRow, setSelectedRow] = useState({});
 
   const searchColumns = [
-    {
-      field: "birthYear",
-      fieldName: "생년",
-      type: "combo",
-      width: 140,
-      comboData: [
-        { value: "1959", description: "1959"},
-        { value: "1991", description: "1991"},
-        { value: "1992", description: "1992"},
-        { value: "1993", description: "1993"},
-        { value: "2022", description: "2022"},
-      ]
-    },
+    // {
+    //   field: "birthYear",
+    //   fieldName: "생년",
+    //   type: "combo",
+    //   width: 140,
+    //   comboData: [
+    //     { value: "1959", description: "1959"},
+    //     { value: "1991", description: "1991"},
+    //     { value: "1992", description: "1992"},
+    //     { value: "1993", description: "1993"},
+    //     { value: "2022", description: "2022"},
+    //   ]
+    // },
     {
       field: "name",
       fieldName: "이름",
       type: "text",
-      width: 140,
+      width: 180,
     },
     {
       field: "phoneNumber",
@@ -77,7 +78,7 @@ const CustomerList = () => {
   ];
 
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     const getList = async() => {
       await axios.get("/api/customer")
         .then( async (response) => {
@@ -87,16 +88,13 @@ const CustomerList = () => {
             if (item.birth) {
               item.birth = new Date(item.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
             }
-            // item.cusNo = item.customerId.cusNo;
-            // item.userNo = item.customerId.userNo;
             item.crtDt = new Date(item.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
           });
           setRows(data);
         }).catch((error) => {
           console.error(error);
-          // alertRef.current.handleClick("error", <span>에러가 발생 했습니다. <br />{error.message}</span>);
         }).finally(() => {
-          // setLoading(false);
+          setLoading(false);
         })
     } 
     getList();
@@ -107,9 +105,36 @@ const CustomerList = () => {
     setModifyActive(false);
   };
 
-  const searchData = (params) => {
-    console.log(params);
-    console.log("parent searchData");
+  const searchData = async (params) => {
+    setLoading(true);
+    let serviceUrl = "/api/customer?";
+
+    if (params) {
+      if (params.name) {
+        serviceUrl += `name=${params.name}&`;
+      }
+      if (params.phoneNumber) {
+        serviceUrl += `phoneNumber=${params.phoneNumber}`;
+      }
+    }
+
+    await axios.get(serviceUrl)
+        .then( async (response) => {
+          const data = await response.data;
+          data.forEach((item, index) => {
+            item.id = index;
+            if (item.birth) {
+              item.birth = new Date(item.birth).toLocaleDateString("en-CA", { timezome: "UTC" });
+            }
+            item.crtDt = new Date(item.crtDt).toLocaleDateString("en-CA", { timezome: "UTC" });
+          });
+          setRows(data);
+        }).catch((error) => {
+          console.error(error);
+          alert("작업을 실패했습니다.")
+        }).finally(() => {
+          setLoading(false);
+        })
   };
 
   return (
@@ -125,7 +150,7 @@ const CustomerList = () => {
         <Button variant="contained" disabled={isModifyActive} onClick={() => navigate(`/store/customer/detail-customer/${selectedRow.userNo}/${selectedRow.cusNo}`)}>상세</Button>
       </section>
       <section className='grid'>
-      <Grid columns={columns} rows={rows} selectRow={selectRow} />
+      <Grid columns={columns} rows={rows} selectRow={selectRow} loading={loading} />
       </section>
     </div>
   );
