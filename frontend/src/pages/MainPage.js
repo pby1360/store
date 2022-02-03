@@ -13,7 +13,8 @@ import CustomerList from './store/customer/CustomerList';
 import AddCustomer from './store/customer/AddCustomer';
 import DetailCustomer from './store/customer/DetailCustomer';
 import Materials from './store/Materials';
-import Reservations from './store/Reservations';
+import Reservation from './store/reservation/Reservation';
+import ReservationList from './store/reservation/ReservationList';
 import Sales from './store/Sales';
 import Community from './community/Community';
 import System from './system/System';
@@ -54,7 +55,8 @@ const MainPage = () => {
           <Route path="/store/customer/add-customer" exact={true} element={<AddCustomer />} />
           <Route path="/store/customer/detail-customer/:userNo/:cusNo" exact={true} element={<DetailCustomer />} />
           <Route path="/store/materials" exact={true} element={<Materials />} />
-          <Route path="/store/reservations" exact={true} element={<Reservations />} />
+          <Route path="/store/reservation" exact={true} element={<Reservation />} />
+          <Route path="/store/reservation/reservation-list" exact={true} element={<ReservationList />} />
           <Route path="/store/sales" exact={true} element={<Sales />} />
           <Route path="/store/community" exact={true} element={<Community />} />
           <Route path="/store/system" exact={true} element={<System />} />
