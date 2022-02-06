@@ -14,7 +14,7 @@ const ReservationList = () => {
   return (
     <div className="customer-list-container">
       <section className="title">
-        <h1>예약관리</h1>
+        <h1>예약목록</h1>
       </section>
       <section className="search-bar">
         {/* <SearchBar columns={searchColumns} searchData={searchData} /> */}

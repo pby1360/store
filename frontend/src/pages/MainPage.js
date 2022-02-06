@@ -15,6 +15,7 @@ import DetailCustomer from './store/customer/DetailCustomer';
 import Materials from './store/Materials';
 import Reservation from './store/reservation/Reservation';
 import ReservationList from './store/reservation/ReservationList';
+import ReservationCalendar from './store/reservation/ReservationCalendar';
 import Sales from './store/Sales';
 import Community from './community/Community';
 import System from './system/System';
@@ -56,6 +57,7 @@ const MainPage = () => {
           <Route path="/store/customer/detail-customer/:userNo/:cusNo" exact={true} element={<DetailCustomer />} />
           <Route path="/store/materials" exact={true} element={<Materials />} />
           <Route path="/store/reservation" exact={true} element={<Reservation />} />
+          <Route path="/store/reservation/reservation-calendar" exact={true} element={<ReservationCalendar />} />
           <Route path="/store/reservation/reservation-list" exact={true} element={<ReservationList />} />
           <Route path="/store/sales" exact={true} element={<Sales />} />
           <Route path="/store/community" exact={true} element={<Community />} />
