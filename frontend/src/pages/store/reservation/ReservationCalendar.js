@@ -1,15 +1,18 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import "styles/pages/reservation/ReservationCalendar.scss";
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'components/AxiosInstance';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { Calendar } from '@fullcalendar/core';
 
 const ReservationCalendar = () => {
+
+  const calendarRef = createRef();
 
   const navigate = useNavigate();
 
@@ -19,14 +22,8 @@ const ReservationCalendar = () => {
 
   const clickDateText = (param) => {
     console.log(param);
-  }
-
-  const injectionCellContent = (args) => {
-    return (
-      <div>
-        <a className="fc-date-text" href='#$' onClick={clickDateText}>{args.dayNumberText}</a>
-      </div>
-    );
+    console.log(calendarRef.current.getApi());
+    calendarRef.current.getApi().changeView('timeGridDay', "2022-02-03");
   }
 
   return (
@@ -51,39 +48,11 @@ const ReservationCalendar = () => {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
           // dayCellContent={injectionCellContent}
-          dateClick={(param) => clickDate(param)}
-          events={[
-            {
-              title: 'event 1',
-              start: '2022-02-05 08:00',
-              end: "2022-02-05 08:30",
-            },
-            {
-              title: 'event 2',
-              start: '2022-02-05 08:00',
-              end: "2022-02-05 08:30",
-            },
-            {
-              title: 'event 3',
-              start: '2022-02-05 08:00',
-              end: "2022-02-05 08:30",
-            },
-            {
-              title: 'event 4',
-              start: '2022-02-05 09:00',
-              end: "2022-02-05 10:30",
-            },
-            {
-              title: 'event 5',
-              start: '2022-02-05 10:00',
-              end: "2022-02-05 10:30",
-            },
-            {
-              title: 'event 6',
-              start: '2022-02-05 09:00',
-              end: "2022-02-05 10:30",
-            },
-          ]}
+          // dateClick={(param) => clickDate(param)}
+          navLinks={true}
+          navLinkDayClick={clickDateText}
+          events={[]}
+          ref={calendarRef}
         />
       </section>
     </div>
