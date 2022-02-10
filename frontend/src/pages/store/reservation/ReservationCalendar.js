@@ -48,7 +48,7 @@ const ReservationCalendar = () => {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
           // dayCellContent={injectionCellContent}
-          // dateClick={(param) => clickDate(param)}
+          dateClick={(param) => clickDate(param)}
           navLinks={true}
           navLinkDayClick={clickDateText}
           events={[]}
