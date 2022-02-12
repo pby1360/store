@@ -19,8 +19,9 @@
   }
 }
 .fc {
-  // border: solid 1px #e8e8e8;
-  // padding: 1rem;
+  .fc-toolbar-title {
+    font-size: 1rem;
+  }
 
   .fc-header-toolbar.fc-toolbar {
     padding-top: 1rem;

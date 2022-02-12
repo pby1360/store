@@ -8,23 +8,51 @@ import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { Calendar } from '@fullcalendar/core';
 
 const ReservationCalendar = () => {
 
   const calendarRef = createRef();
-
   const navigate = useNavigate();
 
+  const clickDateText = (param) => {
+    calendarRef.current.getApi().changeView('timeGridDay', param);
+  }
+
+  const openReservationPop = () => {
+    console.log("open");
+  }
+
+  // double click event start
+  let numClicks = 0;
+  let timeOut;
+
   const clickDate = (param) => {
-    console.log(param);
+    numClicks++ ;
+    switch(numClicks) {
+      case 2:
+        dateDoubleClick(param) ;
+        break ;
+      case 1:
+        timeOut = setTimeout( function() {
+          dateClick(param) ;
+        },400) ;
+        break ;
+      default: break;
+    }
   };
 
-  const clickDateText = (param) => {
-    console.log(param);
-    console.log(calendarRef.current.getApi());
-    calendarRef.current.getApi().changeView('timeGridDay', "2022-02-03");
+  const dateClick = (param) => {
+    console.log('click');
+    numClicks = 0 ; // 클리수 초기화
   }
+
+  const dateDoubleClick = (param) => {
+    console.log('double click');
+    clearTimeout(timeOut) ;
+	  numClicks = 0 ;
+    console.log(param);
+  }
+  // double click event end
 
   return (
     <div className="reservation-calendar-container">
@@ -42,16 +70,37 @@ const ReservationCalendar = () => {
           allDaySlot={false}
           slotMinTime="08:00:00"
           slotMaxTime="23:00:00"
+          customButtons={{
+            reservationPop: {
+              text: "예약",
+              click: openReservationPop,
+            }
+          }}
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
-          // dayCellContent={injectionCellContent}
-          dateClick={(param) => clickDate(param)}
+          dateClick={clickDate}
           navLinks={true}
           navLinkDayClick={clickDateText}
-          events={[]}
+          events={[
+            {
+              title: 'The Title1', // a property!
+              start: '2022-02-12 10:30:00', // a property!
+              end: '2022-02-12 12:00:00', // a property!
+            },
+            {
+              title: 'The Title2', // a property!
+              start: '2022-02-12 11:00:00', // a property!
+              end: '2022-02-12 12:00:00', // a property!
+            },
+            {
+              title: 'The Title3', // a property!
+              start: '2022-02-12 10:30:00', // a property!
+              end: '2022-02-12 13:00:00', // a property!
+            }
+          ]}
           ref={calendarRef}
         />
       </section>
