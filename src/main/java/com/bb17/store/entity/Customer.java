@@ -1,48 +1,122 @@
 package com.bb17.store.entity;
 
-import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Data
-@Table(name = "CUSTOMER")
-@IdClass(CustomerId.class)
-public class Customer {
+@Table("CUSTOMER")
+public class Customer implements Persistable<CustomerKey>{
 	
-	@Id
-	@Column(name = "CUS_NO")
+//	@Id
 	private long cusNo;
-	@Column(name = "USER_NO")
-	private long userNo;
-	
-//	@EmbeddedId
-//	private CustomerId customerId;
-
 	private String name;
-	@Column(name = "PHONE_NUMBER")
+//	@Id
+	private long userNo;
 	private String phoneNumber;	
 	private Date birth;	
-	@Column(name = "JIBUN_ADDRESS")
 	private String jibunAddress;
-	@Column(name = "ROAD_ADDRESS")
 	private String roadAddress;
-	@Column(name = "DETAIL_ADDRESS")
 	private String detailAddress;
 	private String email;
 	private String memo;
-	@Column(name = "CRT_DT")
-	private Date crtDt;
+	@CreatedDate
+	private LocalDateTime crtDt;
+	@LastModifiedDate
+	private LocalDateTime updDt;
+	
+	@Transient
+	private boolean isNew = false;
+
+	public long getCusNo() {
+		return cusNo;
+	}
+	public void setCusNo(long cusNo) {
+		this.cusNo = cusNo;
+	}
+	public long getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(long userNo) {
+		this.userNo = userNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+	public String getJibunAddress() {
+		return jibunAddress;
+	}
+	public void setJibunAddress(String jibunAddress) {
+		this.jibunAddress = jibunAddress;
+	}
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
+	}
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	public LocalDateTime getCrtDt() {
+		return crtDt;
+	}
+	public void setCrtDt(LocalDateTime crtDt) {
+		this.crtDt = crtDt;
+	}
+	public LocalDateTime getUpdDt() {
+		return updDt;
+	}
+	public void setUpdDt(LocalDateTime updDt) {
+		this.updDt = updDt;
+	}
+	@Override
+	public CustomerKey getId() {
+		return new CustomerKey(cusNo, userNo);
+	}
+	@Override
+	public boolean isNew() {
+		return isNew;
+	}
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	
+	
+	
 }
