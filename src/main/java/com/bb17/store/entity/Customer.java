@@ -15,9 +15,9 @@ public class Customer implements Persistable<CustomerKey>{
 	
 //	@Id
 	private long cusNo;
-	private String name;
 //	@Id
 	private long userNo;
+	private String name;
 	private String phoneNumber;	
 	private Date birth;	
 	private String jibunAddress;

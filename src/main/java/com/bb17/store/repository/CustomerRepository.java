@@ -11,6 +11,8 @@ import com.bb17.store.entity.CustomerKey;
 public interface CustomerRepository extends CrudRepository<Customer, CustomerKey> {
 
 	List<Customer> findByUserNo(long userNo);
+	
+	Customer findByCusNoAndUserNo(long cusNo, long userNo);
 
 	@Query("SELECT (IFNULL(MAX(C.CUS_NO), 0) + 1) AS CUS_NO FROM CUSTOMER C WHERE USER_NO = :userNo")
 	long getNextCusNo(long userNo);

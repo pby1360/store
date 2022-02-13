@@ -80,9 +80,10 @@ public class CustomerContoroller {
 		
 		log.info("userNo : " + userNo);
 		log.info("cusNo : " + cusNo);
-		CustomerKey key = new CustomerKey(cusNo, userNo);
+//		CustomerKey key = new CustomerKey(cusNo, userNo);
 //		Customer customer = customerRepository.findById(key).get();
-		Customer customer = new Customer();
+		
+		Customer customer = customerRepository.findByCusNoAndUserNo(cusNo, userNo);
 		if (null != customer.getPhoneNumber() && !"".equals(customer.getPhoneNumber())) {
 			customer.setPhoneNumber(regexService.changePhoneNumber(customer.getPhoneNumber()));
 		}
