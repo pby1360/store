@@ -34,9 +34,8 @@ public class JoinController {
 				return result = "duplicated";
 			}
 
-			user.setNew(true);
 			user.setPassword(encoder.encode(user.getPassword()));
-//			user.setCrtDt(new Date());
+			user.setCrtDt(new Date());
 			userRepository.save(user);
 			result = "success";
 			

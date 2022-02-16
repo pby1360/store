@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -15,13 +13,11 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
-//@Slf4j
+@Slf4j
 @Component
 public class JwtTokenUtil implements Serializable {
-	
-	private Logger log = LoggerFactory.getLogger("JwtTokenUtil");
 
 	private static final long serialVersionUID = 3117784832456513283L;
 	@Value("${jwt.token-validity-in-seconds}")

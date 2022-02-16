@@ -3,8 +3,6 @@ package com.bb17.store.jwt;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,17 +13,15 @@ import org.springframework.stereotype.Service;
 import com.bb17.store.entity.Users;
 import com.bb17.store.repository.UserRepository;
 
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
 
-//@Slf4j
+@Slf4j
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository repository;
-	
-	private Logger log = LoggerFactory.getLogger("JwtUserDetailsService");
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
