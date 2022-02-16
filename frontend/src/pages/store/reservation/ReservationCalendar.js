@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect, createRef } from 'react';
 import "styles/pages/reservation/ReservationCalendar.scss";
-import { Button } from '@mui/material';
+import { Button, Modal, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'components/AxiosInstance';
 import FullCalendar, { CalendarApi } from '@fullcalendar/react';
@@ -11,16 +11,33 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 const ReservationCalendar = () => {
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   const calendarRef = createRef();
   const navigate = useNavigate();
+
+  let selectedTime = null;
+
+  const [isRegistOpen, setRegistOpen] = useState(false);
 
   const clickDateText = (param) => {
     calendarRef.current.getApi().changeView('timeGridDay', param);
   }
 
-  const openReservationPop = () => {
-    console.log("open");
-  }
+  const handleRegistPopOpen = () => {
+    setRegistOpen(true)
+  };
+  const handleRegistPopClose = () => setRegistOpen(false);
 
   // double click event start
   let numClicks = 0;
@@ -42,15 +59,14 @@ const ReservationCalendar = () => {
   };
 
   const dateClick = (param) => {
-    console.log('click');
     numClicks = 0 ; // 클리수 초기화
   }
 
   const dateDoubleClick = (param) => {
-    console.log('double click');
     clearTimeout(timeOut) ;
 	  numClicks = 0 ;
-    console.log(param);
+    selectedTime = param.date;
+    setRegistOpen(true);
   }
   // double click event end
 
@@ -72,8 +88,8 @@ const ReservationCalendar = () => {
           slotMaxTime="23:00:00"
           customButtons={{
             reservationPop: {
-              text: "예약",
-              click: openReservationPop,
+              text: "예약등록",
+              click: handleRegistPopOpen,
             }
           }}
           headerToolbar={{
@@ -104,6 +120,21 @@ const ReservationCalendar = () => {
           ref={calendarRef}
         />
       </section>
+      <Modal
+        open={isRegistOpen}
+        onClose={handleRegistPopClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {selectedTime}
+          </Typography>
+        </Box>
+      </Modal>
     </div>
   );
 };
