@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect, createRef } from 'react';
 import "styles/pages/reservation/ReservationCalendar.scss";
-import { Button, Modal, Box, Typography } from '@mui/material';
+import "styles/components/modal.scss";
+import { Button, Modal, Fade } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'components/AxiosInstance';
 import FullCalendar, { CalendarApi } from '@fullcalendar/react';
@@ -10,18 +11,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 const ReservationCalendar = () => {
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
   const calendarRef = createRef();
   const navigate = useNavigate();
@@ -123,17 +112,17 @@ const ReservationCalendar = () => {
       <Modal
         open={isRegistOpen}
         onClose={handleRegistPopClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {selectedTime}
-          </Typography>
-        </Box>
+        <Fade in={isRegistOpen}>
+          <section className="modal-box">
+            <section className="modal-header">
+              예약등록
+            </section>
+            <section className="modal-body">
+              예약등록
+            </section>
+          </section>
+        </Fade>
       </Modal>
     </div>
   );

@@ -464,3 +464,188 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
 2022-02-17 01:19:51.331  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-02-17 01:19:51.333  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-02-17 01:19:51.342  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-17 21:59:30.659  INFO 21704 --- [main] com.bb17.store.StoreApplication          : Starting StoreApplication using Java 11.0.11 on DESKTOP-HO3T745 with PID 21704 (C:\Users\user\eclipse-workspace\store\target\classes started by user in C:\Users\user\eclipse-workspace\store)
+2022-02-17 21:59:30.663  INFO 21704 --- [main] com.bb17.store.StoreApplication          : No active profile set, falling back to default profiles: default
+2022-02-17 21:59:31.444  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-17 21:59:31.446  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-17 21:59:31.512  INFO 21704 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.CustomerRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-17 21:59:31.514  INFO 21704 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-17 21:59:31.515  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 0 JDBC repository interfaces.
+2022-02-17 21:59:31.523  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-17 21:59:31.524  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 21:59:31.563  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 2 JPA repository interfaces.
+2022-02-17 21:59:32.153  INFO 21704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-17 21:59:32.164  INFO 21704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 21:59:32.165  INFO 21704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-17 21:59:32.269  INFO 21704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-17 21:59:32.269  INFO 21704 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1554 ms
+2022-02-17 21:59:32.428  INFO 21704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-17 21:59:32.846  INFO 21704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-17 21:59:32.894  INFO 21704 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 21:59:32.993  INFO 21704 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-17 21:59:33.330  INFO 21704 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-17 21:59:33.453  INFO 21704 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 21:59:34.020  INFO 21704 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 21:59:34.031  INFO 21704 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 21:59:34.425  WARN 21704 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 21:59:34.799  INFO 21704 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e00d737, org.springframework.security.web.context.SecurityContextPersistenceFilter@633c0a61, org.springframework.security.web.header.HeaderWriterFilter@2a2815cc, org.springframework.web.filter.CorsFilter@656c0eae, org.springframework.security.web.authentication.logout.LogoutFilter@2a9ea03f, com.bb17.store.jwt.JwtRequestFilter@5dfec221, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b6b746b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f7a65e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d7f966f, org.springframework.security.web.session.SessionManagementFilter@5c43cb12, org.springframework.security.web.access.ExceptionTranslationFilter@28100232, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62525dd3]
+2022-02-17 21:59:35.186  WARN 21704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2022-02-17 21:59:35.334  INFO 21704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-17 21:59:35.343  INFO 21704 --- [main] com.bb17.store.StoreApplication          : Started StoreApplication in 5.184 seconds (JVM running for 8.379)
+2022-02-17 22:52:55.589  INFO 21704 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-17 22:52:55.590  INFO 21704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-17 22:52:55.591  INFO 21704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-02-17 22:52:55.637  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-17 22:52:55.638  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
+2022-02-17 22:52:55.638  WARN 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
+2022-02-17 22:52:55.756  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
+2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
+2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
+2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
+2022-02-17 22:52:55.856  INFO 21704 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-17 22:52:55.890 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-17 22:52:55.952 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:52:56.069  INFO 21704 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-17 22:52:56.070 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-17 22:52:56.077 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:52:56.084  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> generateToken
+2022-02-17 22:52:56.085  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> doGenerateToken
+2022-02-17 22:52:56.122 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ4NzA1OTc2LCJpYXQiOjE2NDUxMDU5NzZ9.0dQ4LXjxUc1OJnzCxWCpw_cQURVc29C0AZQM_VfzjhgNUhOb62d3tYsZIa40DaIgtksxZoKaRIBzdPPJqsOfjA
+2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-17 22:57:59.393  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-17 22:57:59.393  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-17 22:57:59.431 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-17 22:57:59.448 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:57:59.517  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-17 22:57:59.524 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:57:59.532  INFO 21704 --- [http-nio-8080-exec-5] CustomerContoroller                      : isEmpty ? true
+2022-02-17 22:57:59.534 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-17 22:58:27.452  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ4NzA1OTc2LCJpYXQiOjE2NDUxMDU5NzZ9.0dQ4LXjxUc1OJnzCxWCpw_cQURVc29C0AZQM_VfzjhgNUhOb62d3tYsZIa40DaIgtksxZoKaRIBzdPPJqsOfjA
+2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-17 22:58:27.461 DEBUG 21704 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-17 22:58:27.480 DEBUG 21704 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-17 22:58:27.488  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-17 22:58:27.490  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
