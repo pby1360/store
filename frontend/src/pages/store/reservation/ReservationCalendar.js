@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState, useEffect, createRef } from 'react';
-import "styles/pages/reservation/ReservationCalendar.scss";
-import "styles/components/modal.scss";
-import { Button, Modal, Fade } from '@mui/material';
+import { Button, InputLabel, TextField, Select, MenuItem, FormControl } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import CustomModal from 'components/CustomModal';
+import "styles/pages/reservation/ReservationCalendar.scss";
+// import "styles/components/modal.scss";
+
 import axios from 'components/AxiosInstance';
-import FullCalendar, { CalendarApi } from '@fullcalendar/react';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -17,16 +20,16 @@ const ReservationCalendar = () => {
 
   let selectedTime = null;
 
-  const [isRegistOpen, setRegistOpen] = useState(false);
+  const [isActiveModal, setAcitveModal] = useState(false);
 
   const clickDateText = (param) => {
     calendarRef.current.getApi().changeView('timeGridDay', param);
   }
 
   const handleRegistPopOpen = () => {
-    setRegistOpen(true)
+    setAcitveModal(true)
   };
-  const handleRegistPopClose = () => setRegistOpen(false);
+  const handleRegistPopClose = () => setAcitveModal(false);
 
   // double click event start
   let numClicks = 0;
@@ -55,7 +58,7 @@ const ReservationCalendar = () => {
     clearTimeout(timeOut) ;
 	  numClicks = 0 ;
     selectedTime = param.date;
-    setRegistOpen(true);
+    setAcitveModal(true);
   }
   // double click event end
 
@@ -109,21 +112,46 @@ const ReservationCalendar = () => {
           ref={calendarRef}
         />
       </section>
-      <Modal
-        open={isRegistOpen}
-        onClose={handleRegistPopClose}
-      >
-        <Fade in={isRegistOpen}>
-          <section className="modal-box">
-            <section className="modal-header">
-              예약등록
-            </section>
-            <section className="modal-body">
-              예약등록
-            </section>
+      <CustomModal open={isActiveModal} title="예약등록" close={handleRegistPopClose}>
+	      <CustomModal.Body>
+          <section className='reservation-modal-input'>
+            <InputLabel>고객</InputLabel>
+            <FormControl fullWidth>
+              <Select size="small">
+                <MenuItem value="">
+                  <em>선택하세요</em>
+                </MenuItem>
+              </Select>
+            </FormControl>
           </section>
-        </Fade>
-      </Modal>
+          <section className='reservation-modal-input'>
+            <InputLabel>서비스</InputLabel>
+            <FormControl fullWidth>
+              <Select size="small">
+                <MenuItem value="">
+                  <em>선택하세요</em>
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </section>
+          <section className='reservation-modal-input'>
+            <InputLabel>메모</InputLabel>
+            <TextField fullWidth={true} variant='outlined' size='small' />
+          </section>
+          <section className='reservation-modal-input'>
+            <InputLabel>예약시작시간</InputLabel>
+          </section>
+          <section className='reservation-modal-input'>
+            <InputLabel>예약종료시간</InputLabel>
+          </section>
+	      </CustomModal.Body>
+	      <CustomModal.Footer>
+          <section className="reservation-modal-button">
+            <Button variant="contained">등록</Button>
+            <Button variant="contained" onClick={handleRegistPopClose}>취소</Button>
+          </section>
+	      </CustomModal.Footer>
+      </CustomModal>
     </div>
   );
 };

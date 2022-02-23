@@ -1,420 +1,50 @@
-2022-02-17 00:50:45.540  INFO 20032 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-17 00:50:45.544  INFO 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-02-17 00:50:45.546  INFO 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-02-17 00:50:45.587  INFO 20032 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 00:50:45.588  INFO 20032 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
-2022-02-17 00:50:45.588  WARN 20032 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
-2022-02-17 00:50:45.683  INFO 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
-2022-02-17 00:50:45.683  INFO 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
-2022-02-17 00:50:45.683  INFO 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
-2022-02-17 00:50:45.684  INFO 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
-2022-02-17 00:50:45.786  INFO 20032 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:50:45.816 DEBUG 20032 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select users0_.user_no as col_0_0_ from users users0_ where users0_.user_id=? limit ?
-2022-02-17 00:50:45.883  WARN 20032 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1146, SQLState: 42S02
-2022-02-17 00:50:45.883 ERROR 20032 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table 'store.users' doesn't exist
-2022-02-17 00:50:45.892  INFO 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate -> 3
-2022-02-17 00:50:45.893 ERROR 20032 --- [http-nio-8080-exec-2] JwtAuthenticationController              : error : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
-2022-02-17 00:50:45.893  INFO 20032 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:50:45.893 DEBUG 20032 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select users0_.user_no as col_0_0_ from users users0_ where users0_.user_id=? limit ?
-2022-02-17 00:50:45.899  WARN 20032 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1146, SQLState: 42S02
-2022-02-17 00:50:45.899 ERROR 20032 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table 'store.users' doesn't exist
-2022-02-17 00:50:45.914 ERROR 20032 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
-
-java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1009) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-4.0.3.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-4.0.3.jar:na]
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doQuery(Loader.java:956) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doList(Loader.java:2868) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doList(Loader.java:2850) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.list(Loader.java:2677) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:219) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1468) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.Query.getResultList(Query.java:165) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getResultList(CriteriaQueryTypeQueryAdapter.java:76) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$ExistsExecution.doExecute(JpaQueryExecution.java:294) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:159) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.13.jar:5.3.13]
-	at com.sun.proxy.$Proxy104.existsByUserId(Unknown Source) ~[na:na]
-	at com.bb17.store.jwt.JwtUserDetailsService.loadUserByUsername(JwtUserDetailsService.java:31) ~[classes/:na]
-	at com.bb17.store.jwt.JwtAuthenticationController.createAuthenticationToken(JwtAuthenticationController.java:52) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.55.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.55.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:113) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at com.bb17.store.jwt.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:76) ~[classes/:na]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
-
-2022-02-17 00:51:08.883  INFO 20032 --- [RMI TCP Connection(98)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2022-02-17 00:51:09.386  INFO 20032 --- [RMI TCP Connection(98)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 00:51:09.388  INFO 20032 --- [RMI TCP Connection(98)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-17 00:51:09.395  INFO 20032 --- [RMI TCP Connection(98)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-02-17 00:51:24.822  INFO 20248 --- [main] com.bb17.store.StoreApplication          : Starting StoreApplication using Java 11.0.11 on DESKTOP-HO3T745 with PID 20248 (C:\Users\user\eclipse-workspace\store\target\classes started by user in C:\Users\user\eclipse-workspace\store)
-2022-02-17 00:51:24.824  INFO 20248 --- [main] com.bb17.store.StoreApplication          : No active profile set, falling back to default profiles: default
-2022-02-17 00:51:25.389  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 00:51:25.390  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2022-02-17 00:51:25.419  INFO 20248 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.CustomerRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 00:51:25.421  INFO 20248 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 00:51:25.421  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
-2022-02-17 00:51:25.427  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 00:51:25.428  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-02-17 00:51:25.456  INFO 20248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
-2022-02-17 00:51:25.863  INFO 20248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-02-17 00:51:25.871  INFO 20248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-02-17 00:51:25.871  INFO 20248 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
-2022-02-17 00:51:25.975  INFO 20248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-02-17 00:51:25.976  INFO 20248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1117 ms
-2022-02-17 00:51:26.112  INFO 20248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-17 00:51:26.426  INFO 20248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-17 00:51:26.485  INFO 20248 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-17 00:51:26.528  INFO 20248 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
-2022-02-17 00:51:26.639  INFO 20248 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-17 00:51:26.757  INFO 20248 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-17 00:51:27.630  INFO 20248 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-17 00:51:27.642  INFO 20248 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 00:51:28.062  WARN 20248 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-17 00:51:28.383  INFO 20248 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@435a2c7d, org.springframework.security.web.context.SecurityContextPersistenceFilter@11cdf948, org.springframework.security.web.header.HeaderWriterFilter@7f2542f, org.springframework.web.filter.CorsFilter@57806346, org.springframework.security.web.authentication.logout.LogoutFilter@3c9cfcde, com.bb17.store.jwt.JwtRequestFilter@1f6e6f50, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2fd8b081, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25a2f432, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40416321, org.springframework.security.web.session.SessionManagementFilter@153d14e3, org.springframework.security.web.access.ExceptionTranslationFilter@3f6a9ba0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2184962c]
-2022-02-17 00:51:28.695  WARN 20248 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
-2022-02-17 00:51:28.794  INFO 20248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-02-17 00:51:28.802  INFO 20248 --- [main] com.bb17.store.StoreApplication          : Started StoreApplication in 4.319 seconds (JVM running for 5.452)
-2022-02-17 00:51:43.143  INFO 20248 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-17 00:51:43.143  INFO 20248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-02-17 00:51:43.147  INFO 20248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-02-17 00:51:43.191  INFO 20248 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 00:51:43.191  INFO 20248 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
-2022-02-17 00:51:43.191  WARN 20248 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
-2022-02-17 00:51:43.273  INFO 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
-2022-02-17 00:51:43.273  INFO 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
-2022-02-17 00:51:43.273  INFO 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
-2022-02-17 00:51:43.274  INFO 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
-2022-02-17 00:51:43.378  INFO 20248 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:51:43.407 DEBUG 20248 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select users0_.user_no as col_0_0_ from users users0_ where users0_.user_id=? limit ?
-2022-02-17 00:51:43.455  WARN 20248 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1146, SQLState: 42S02
-2022-02-17 00:51:43.456 ERROR 20248 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table 'store.users' doesn't exist
-2022-02-17 00:51:43.466  INFO 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate -> 3
-2022-02-17 00:51:43.467 ERROR 20248 --- [http-nio-8080-exec-2] JwtAuthenticationController              : error : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
-2022-02-17 00:51:43.467  INFO 20248 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:51:43.467 DEBUG 20248 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select users0_.user_no as col_0_0_ from users users0_ where users0_.user_id=? limit ?
-2022-02-17 00:51:43.473  WARN 20248 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1146, SQLState: 42S02
-2022-02-17 00:51:43.473 ERROR 20248 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table 'store.users' doesn't exist
-2022-02-17 00:51:43.488 ERROR 20248 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
-
-java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1009) ~[mysql-connector-java-8.0.27.jar:8.0.27]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-4.0.3.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-4.0.3.jar:na]
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doQuery(Loader.java:956) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doList(Loader.java:2868) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.doList(Loader.java:2850) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.Loader.list(Loader.java:2677) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:219) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1468) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.Query.getResultList(Query.java:165) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getResultList(CriteriaQueryTypeQueryAdapter.java:76) ~[hibernate-core-5.6.1.Final.jar:5.6.1.Final]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$ExistsExecution.doExecute(JpaQueryExecution.java:294) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:159) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80) ~[spring-data-commons-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145) ~[spring-data-jpa-2.6.0.jar:2.6.0]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.13.jar:5.3.13]
-	at com.sun.proxy.$Proxy104.existsByUserId(Unknown Source) ~[na:na]
-	at com.bb17.store.jwt.JwtUserDetailsService.loadUserByUsername(JwtUserDetailsService.java:31) ~[classes/:na]
-	at com.bb17.store.jwt.JwtAuthenticationController.createAuthenticationToken(JwtAuthenticationController.java:52) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.55.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.13.jar:5.3.13]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.55.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:113) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at com.bb17.store.jwt.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:76) ~[classes/:na]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.6.0.jar:5.6.0]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.13.jar:5.3.13]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.55.jar:9.0.55]
-	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
-
-2022-02-17 00:54:50.656  INFO 20248 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2022-02-17 00:54:51.176  INFO 20248 --- [RMI TCP Connection(12)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 00:54:51.178  INFO 20248 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-17 00:54:51.187  INFO 20248 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-02-17 00:54:57.957  INFO 20392 --- [main] com.bb17.store.StoreApplication          : Starting StoreApplication using Java 11.0.11 on DESKTOP-HO3T745 with PID 20392 (C:\Users\user\eclipse-workspace\store\target\classes started by user in C:\Users\user\eclipse-workspace\store)
-2022-02-17 00:54:57.959  INFO 20392 --- [main] com.bb17.store.StoreApplication          : No active profile set, falling back to default profiles: default
-2022-02-17 00:54:58.504  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 00:54:58.505  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2022-02-17 00:54:58.536  INFO 20392 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.CustomerRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 00:54:58.537  INFO 20392 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 00:54:58.538  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 0 JDBC repository interfaces.
-2022-02-17 00:54:58.544  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 00:54:58.544  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-02-17 00:54:58.574  INFO 20392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
-2022-02-17 00:54:58.970  INFO 20392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-02-17 00:54:58.977  INFO 20392 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-02-17 00:54:58.977  INFO 20392 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
-2022-02-17 00:54:59.063  INFO 20392 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-02-17 00:54:59.063  INFO 20392 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1073 ms
-2022-02-17 00:54:59.202  INFO 20392 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-17 00:54:59.526  INFO 20392 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-17 00:54:59.598  INFO 20392 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-17 00:54:59.646  INFO 20392 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
-2022-02-17 00:54:59.757  INFO 20392 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-17 00:54:59.852  INFO 20392 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-17 00:55:00.293  INFO 20392 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-17 00:55:00.302  INFO 20392 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 00:55:00.645  WARN 20392 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-17 00:55:00.948  INFO 20392 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a2815cc, org.springframework.security.web.context.SecurityContextPersistenceFilter@229d508c, org.springframework.security.web.header.HeaderWriterFilter@34c6b52e, org.springframework.web.filter.CorsFilter@18fa5af6, org.springframework.security.web.authentication.logout.LogoutFilter@7a14ab66, com.bb17.store.jwt.JwtRequestFilter@4c3fcbe7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7167d81b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2cb53bfc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fdabb3b, org.springframework.security.web.session.SessionManagementFilter@2b409174, org.springframework.security.web.access.ExceptionTranslationFilter@23cb8fcb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5dff108c]
-2022-02-17 00:55:01.256  WARN 20392 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
-2022-02-17 00:55:01.348  INFO 20392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-02-17 00:55:01.356  INFO 20392 --- [main] com.bb17.store.StoreApplication          : Started StoreApplication in 3.735 seconds (JVM running for 4.844)
-2022-02-17 00:55:03.212  INFO 20392 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-17 00:55:03.213  INFO 20392 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-02-17 00:55:03.214  INFO 20392 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-02-17 00:55:03.253  INFO 20392 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 00:55:03.254  INFO 20392 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
-2022-02-17 00:55:03.254  WARN 20392 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
-2022-02-17 00:55:03.333  INFO 20392 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
-2022-02-17 00:55:03.333  INFO 20392 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
-2022-02-17 00:55:03.334  INFO 20392 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
-2022-02-17 00:55:03.334  INFO 20392 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
-2022-02-17 00:55:03.426  INFO 20392 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:55:03.452 DEBUG 20392 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 21:36:00.809  INFO 16136 --- [main] com.bb17.store.StoreApplication          : Starting StoreApplication using Java 11.0.11 on DESKTOP-HO3T745 with PID 16136 (C:\Users\user\eclipse-workspace\store\target\classes started by user in C:\Users\user\eclipse-workspace\store)
+2022-02-23 21:36:00.954  INFO 16136 --- [main] com.bb17.store.StoreApplication          : No active profile set, falling back to default profiles: default
+2022-02-23 21:36:02.263  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-23 21:36:02.265  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-23 21:36:02.307  INFO 16136 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.CustomerRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-23 21:36:02.309  INFO 16136 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-23 21:36:02.310  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 0 JDBC repository interfaces.
+2022-02-23 21:36:02.319  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-23 21:36:02.319  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-23 21:36:02.364  INFO 16136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 2 JPA repository interfaces.
+2022-02-23 21:36:02.900  INFO 16136 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-23 21:36:02.912  INFO 16136 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-23 21:36:02.912  INFO 16136 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-23 21:36:03.038  INFO 16136 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-23 21:36:03.039  INFO 16136 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1900 ms
+2022-02-23 21:36:03.186  INFO 16136 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-23 21:36:03.535  INFO 16136 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-23 21:36:03.596  INFO 16136 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-23 21:36:03.666  INFO 16136 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-23 21:36:03.850  INFO 16136 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-23 21:36:03.981  INFO 16136 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-23 21:36:04.535  INFO 16136 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-23 21:36:04.546  INFO 16136 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-23 21:36:04.920  WARN 16136 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-23 21:36:05.290  INFO 16136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57806346, org.springframework.security.web.context.SecurityContextPersistenceFilter@523f3c29, org.springframework.security.web.header.HeaderWriterFilter@3dad8bde, org.springframework.web.filter.CorsFilter@40416321, org.springframework.security.web.authentication.logout.LogoutFilter@2f3c7b24, com.bb17.store.jwt.JwtRequestFilter@58a7ca42, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2fe38b73, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7efba9b9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ab70d34, org.springframework.security.web.session.SessionManagementFilter@3b17759c, org.springframework.security.web.access.ExceptionTranslationFilter@1e749235, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4d9bccfe]
+2022-02-23 21:36:05.638  WARN 16136 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2022-02-23 21:36:05.754  INFO 16136 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-23 21:36:05.764  INFO 16136 --- [main] com.bb17.store.StoreApplication          : Started StoreApplication in 5.604 seconds (JVM running for 7.77)
+2022-02-23 21:38:04.695  INFO 16136 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-23 21:38:04.696  INFO 16136 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-23 21:38:04.698  INFO 16136 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-02-23 21:38:04.744  INFO 16136 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 21:38:04.744  INFO 16136 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
+2022-02-23 21:38:04.744  WARN 16136 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
+2022-02-23 21:38:04.845  INFO 16136 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
+2022-02-23 21:38:04.845  INFO 16136 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
+2022-02-23 21:38:04.845  INFO 16136 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
+2022-02-23 21:38:04.845  INFO 16136 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
+2022-02-23 21:38:04.946  INFO 16136 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-23 21:38:04.979 DEBUG 16136 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 00:55:03.508 DEBUG 20392 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 21:38:05.038 DEBUG 16136 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -426,15 +56,15 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 00:55:03.623  INFO 20392 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 00:55:03.623 DEBUG 20392 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 21:38:05.157  INFO 16136 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-23 21:38:05.157 DEBUG 16136 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 00:55:03.630 DEBUG 20392 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 21:38:05.165 DEBUG 16136 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -446,9 +76,9 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 00:55:03.637  INFO 20392 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> generateToken
-2022-02-17 00:55:03.638  INFO 20392 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> doGenerateToken
-2022-02-17 00:55:03.674 DEBUG 20392 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 21:38:05.172  INFO 16136 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> generateToken
+2022-02-23 21:38:05.172  INFO 16136 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> doGenerateToken
+2022-02-23 21:38:05.214 DEBUG 16136 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -460,57 +90,22 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 01:19:50.797  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2022-02-17 01:19:51.331  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 01:19:51.333  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-17 01:19:51.342  INFO 20392 --- [RMI TCP Connection(32)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-02-17 21:59:30.659  INFO 21704 --- [main] com.bb17.store.StoreApplication          : Starting StoreApplication using Java 11.0.11 on DESKTOP-HO3T745 with PID 21704 (C:\Users\user\eclipse-workspace\store\target\classes started by user in C:\Users\user\eclipse-workspace\store)
-2022-02-17 21:59:30.663  INFO 21704 --- [main] com.bb17.store.StoreApplication          : No active profile set, falling back to default profiles: default
-2022-02-17 21:59:31.444  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 21:59:31.446  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2022-02-17 21:59:31.512  INFO 21704 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.CustomerRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 21:59:31.514  INFO 21704 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bb17.store.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2022-02-17 21:59:31.515  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 0 JDBC repository interfaces.
-2022-02-17 21:59:31.523  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-02-17 21:59:31.524  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-02-17 21:59:31.563  INFO 21704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 2 JPA repository interfaces.
-2022-02-17 21:59:32.153  INFO 21704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-02-17 21:59:32.164  INFO 21704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-02-17 21:59:32.165  INFO 21704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
-2022-02-17 21:59:32.269  INFO 21704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-02-17 21:59:32.269  INFO 21704 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1554 ms
-2022-02-17 21:59:32.428  INFO 21704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-17 21:59:32.846  INFO 21704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-17 21:59:32.894  INFO 21704 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-17 21:59:32.993  INFO 21704 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
-2022-02-17 21:59:33.330  INFO 21704 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-17 21:59:33.453  INFO 21704 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-17 21:59:34.020  INFO 21704 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-17 21:59:34.031  INFO 21704 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-17 21:59:34.425  WARN 21704 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-17 21:59:34.799  INFO 21704 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e00d737, org.springframework.security.web.context.SecurityContextPersistenceFilter@633c0a61, org.springframework.security.web.header.HeaderWriterFilter@2a2815cc, org.springframework.web.filter.CorsFilter@656c0eae, org.springframework.security.web.authentication.logout.LogoutFilter@2a9ea03f, com.bb17.store.jwt.JwtRequestFilter@5dfec221, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b6b746b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f7a65e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d7f966f, org.springframework.security.web.session.SessionManagementFilter@5c43cb12, org.springframework.security.web.access.ExceptionTranslationFilter@28100232, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62525dd3]
-2022-02-17 21:59:35.186  WARN 21704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
-2022-02-17 21:59:35.334  INFO 21704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-02-17 21:59:35.343  INFO 21704 --- [main] com.bb17.store.StoreApplication          : Started StoreApplication in 5.184 seconds (JVM running for 8.379)
-2022-02-17 22:52:55.589  INFO 21704 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-17 22:52:55.590  INFO 21704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-02-17 22:52:55.591  INFO 21704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-02-17 22:52:55.637  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 22:52:55.638  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : auth: null
-2022-02-17 22:52:55.638  WARN 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
-2022-02-17 22:52:55.756  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
-2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : id: pby1360
-2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : pw: comet1
-2022-02-17 22:52:55.757  INFO 21704 --- [http-nio-8080-exec-2] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
-2022-02-17 22:52:55.856  INFO 21704 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 22:52:55.890 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 22:40:37.442  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:40:37.443  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtRequestFilter      : auth: null
+2022-02-23 22:40:37.443  WARN 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtRequestFilter      : JWT Token does not begin with Bearer String
+2022-02-23 22:40:37.463  INFO 16136 --- [http-nio-8080-exec-4] JwtAuthenticationController              : ::JwtAuthenticationController -> createAuthenticationToken
+2022-02-23 22:40:37.463  INFO 16136 --- [http-nio-8080-exec-4] JwtAuthenticationController              : id: pby1360
+2022-02-23 22:40:37.463  INFO 16136 --- [http-nio-8080-exec-4] JwtAuthenticationController              : pw: comet1
+2022-02-23 22:40:37.463  INFO 16136 --- [http-nio-8080-exec-4] JwtAuthenticationController              : ::JwtAuthenticationController -> authenticate
+2022-02-23 22:40:37.464  INFO 16136 --- [http-nio-8080-exec-4] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-23 22:40:37.470 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 22:52:55.952 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 22:40:37.486 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -522,15 +117,15 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:52:56.069  INFO 21704 --- [http-nio-8080-exec-2] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
-2022-02-17 22:52:56.070 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 22:40:37.591  INFO 16136 --- [http-nio-8080-exec-4] c.bb17.store.jwt.JwtUserDetailsService   : ::JwtUserDetailsService -> loadUserByUsername
+2022-02-23 22:40:37.593 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 22:52:56.077 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 22:40:37.601 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -542,9 +137,9 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:52:56.084  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> generateToken
-2022-02-17 22:52:56.085  INFO 21704 --- [http-nio-8080-exec-2] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> doGenerateToken
-2022-02-17 22:52:56.122 DEBUG 21704 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+2022-02-23 22:40:37.608  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> generateToken
+2022-02-23 22:40:37.608  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> doGenerateToken
+2022-02-23 22:40:37.610 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -556,19 +151,19 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ4NzA1OTc2LCJpYXQiOjE2NDUxMDU5NzZ9.0dQ4LXjxUc1OJnzCxWCpw_cQURVc29C0AZQM_VfzjhgNUhOb62d3tYsZIa40DaIgtksxZoKaRIBzdPPJqsOfjA
-2022-02-17 22:57:59.392  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
-2022-02-17 22:57:59.393  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
-2022-02-17 22:57:59.393  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
-2022-02-17 22:57:59.431 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+2022-02-23 22:52:40.853  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:52:40.854  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:52:40.856  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:40.857  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:40.857  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:40.916 DEBUG 16136 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 22:57:59.448 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+2022-02-23 22:52:40.931 DEBUG 16136 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -580,15 +175,15 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:57:59.517  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
-2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
-2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
-2022-02-17 22:57:59.518  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
-2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
-2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
-2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
-2022-02-17 22:57:59.519  INFO 21704 --- [http-nio-8080-exec-5] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
-2022-02-17 22:57:59.524 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+2022-02-23 22:52:40.937  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:52:40.938  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:40.938  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:40.938  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:40.939  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:52:40.939  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:52:40.939  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:40.939  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:40.948 DEBUG 16136 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -600,8 +195,8 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:57:59.532  INFO 21704 --- [http-nio-8080-exec-5] CustomerContoroller                      : isEmpty ? true
-2022-02-17 22:57:59.534 DEBUG 21704 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+2022-02-23 22:52:40.958  INFO 16136 --- [http-nio-8080-exec-7] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:52:40.965 DEBUG 16136 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
     select
         customer0_.CUS_NO as cus_no1_0_,
         customer0_.USER_NO as user_no2_0_,
@@ -618,19 +213,19 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         CUSTOMER customer0_ 
     where
         customer0_.USER_NO=?
-2022-02-17 22:58:27.452  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
-2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ4NzA1OTc2LCJpYXQiOjE2NDUxMDU5NzZ9.0dQ4LXjxUc1OJnzCxWCpw_cQURVc29C0AZQM_VfzjhgNUhOb62d3tYsZIa40DaIgtksxZoKaRIBzdPPJqsOfjA
-2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
-2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
-2022-02-17 22:58:27.453  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
-2022-02-17 22:58:27.461 DEBUG 21704 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+2022-02-23 22:52:43.062  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:52:43.063  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:52:43.063  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:43.063  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:43.063  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:43.065 DEBUG 16136 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as col_0_0_ 
     from
         USERS users0_ 
     where
         users0_.USER_ID=? limit ?
-2022-02-17 22:58:27.480 DEBUG 21704 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+2022-02-23 22:52:43.077 DEBUG 16136 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
     select
         users0_.USER_NO as user_no1_1_,
         users0_.CRT_DT as crt_dt2_1_,
@@ -642,10 +237,294 @@ java.sql.SQLSyntaxErrorException: Table 'store.users' doesn't exist
         USERS users0_ 
     where
         users0_.USER_ID=?
-2022-02-17 22:58:27.488  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
-2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
-2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
-2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
-2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
-2022-02-17 22:58:27.489  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
-2022-02-17 22:58:27.490  INFO 21704 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:43.083  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:52:43.084  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:43.084  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:43.084  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:43.085  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:52:43.085  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:52:43.085  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:43.085  INFO 16136 --- [http-nio-8080-exec-8] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:43.087 DEBUG 16136 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:52:43.094  INFO 16136 --- [http-nio-8080-exec-8] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:52:43.095 DEBUG 16136 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-23 22:52:47.225  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:52:47.226  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:52:47.226  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:47.226  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:47.226  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:47.228 DEBUG 16136 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-23 22:52:47.241 DEBUG 16136 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:52:47.257  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:52:47.257  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:52:47.257  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:47.257  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:47.258  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:52:47.258  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:52:47.258  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:52:47.258  INFO 16136 --- [http-nio-8080-exec-10] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:52:47.260 DEBUG 16136 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:52:47.271  INFO 16136 --- [http-nio-8080-exec-10] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:52:47.271 DEBUG 16136 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-23 22:56:19.401  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:56:19.401  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:56:19.401  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:19.401  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:19.401  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:19.404 DEBUG 16136 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-23 22:56:19.415 DEBUG 16136 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:19.421  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:56:19.421  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:19.421  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:19.421  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:19.422  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:56:19.423  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:56:19.423  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:19.423  INFO 16136 --- [http-nio-8080-exec-3] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:19.425 DEBUG 16136 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:19.431  INFO 16136 --- [http-nio-8080-exec-3] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:56:19.432 DEBUG 16136 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-23 22:56:22.373  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:56:22.373  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:56:22.373  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:22.373  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:22.373  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:22.376 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-23 22:56:22.387 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:22.394  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:56:22.394  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:22.394  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:22.394  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:22.396  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:56:22.396  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:56:22.396  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:22.396  INFO 16136 --- [http-nio-8080-exec-4] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:22.397 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:22.404  INFO 16136 --- [http-nio-8080-exec-4] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:56:22.405 DEBUG 16136 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-23 22:56:25.272  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:56:25.272  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:56:25.272  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:25.272  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:25.272  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:25.273 DEBUG 16136 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as col_0_0_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=? limit ?
+2022-02-23 22:56:25.285 DEBUG 16136 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:25.292  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> validateToken
+2022-02-23 22:56:25.292  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:25.292  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:25.292  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:25.293  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> isTokenExpired
+2022-02-23 22:56:25.293  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getExpirationDateFromToken
+2022-02-23 22:56:25.293  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:25.293  INFO 16136 --- [http-nio-8080-exec-6] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken
+2022-02-23 22:56:25.294 DEBUG 16136 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        users0_.USER_NO as user_no1_1_,
+        users0_.CRT_DT as crt_dt2_1_,
+        users0_.email as email3_1_,
+        users0_.name as name4_1_,
+        users0_.password as password5_1_,
+        users0_.USER_ID as user_id6_1_ 
+    from
+        USERS users0_ 
+    where
+        users0_.USER_ID=?
+2022-02-23 22:56:25.300  INFO 16136 --- [http-nio-8080-exec-6] CustomerContoroller                      : isEmpty ? true
+2022-02-23 22:56:25.301 DEBUG 16136 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        customer0_.CUS_NO as cus_no1_0_,
+        customer0_.USER_NO as user_no2_0_,
+        customer0_.birth as birth3_0_,
+        customer0_.CRT_DT as crt_dt4_0_,
+        customer0_.DETAIL_ADDRESS as detail_a5_0_,
+        customer0_.email as email6_0_,
+        customer0_.JIBUN_ADDRESS as jibun_ad7_0_,
+        customer0_.memo as memo8_0_,
+        customer0_.name as name9_0_,
+        customer0_.PHONE_NUMBER as phone_n10_0_,
+        customer0_.ROAD_ADDRESS as road_ad11_0_ 
+    from
+        CUSTOMER customer0_ 
+    where
+        customer0_.USER_NO=?
+2022-02-23 22:56:28.985  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : ::JwtRequestFilter -> doFilterInternal
+2022-02-23 22:56:28.985  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtRequestFilter      : auth: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYnkxMzYwIiwiZXhwIjoxNjQ5MjIzNjM3LCJpYXQiOjE2NDU2MjM2Mzd9.Y5YxlyVAi5I1VkH71Fac2sCofu3hwcgrFUAJKqiCa_utBVTWVI9ZvfRR_R6iCFMJK-QNJOO3EB1a04qZ3cfl-g
+2022-02-23 22:56:28.985  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getUsernameFromToken
+2022-02-23 22:56:28.985  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getClaimFromToken
+2022-02-23 22:56:28.985  INFO 16136 --- [http-nio-8080-exec-7] com.bb17.store.jwt.JwtTokenUtil          : ::JwtTokenUtil -> getAllClaimsFromToken

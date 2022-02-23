@@ -28,3 +28,14 @@
     border-top: solid 3px #f04d4d;
   }
 }
+.reservation-modal-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin-left: 0.25rem;
+  }
+}
+.reservation-modal-input {
+}
